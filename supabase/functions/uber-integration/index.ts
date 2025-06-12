@@ -43,10 +43,13 @@ serve(async (req) => {
     let body;
     try {
       const text = await req.text();
+      console.log('Received request body:', text);
       body = JSON.parse(text);
+      console.log('Parsed body:', body);
     } catch (e) {
+      console.error('Error parsing request:', e);
       return new Response(
-        JSON.stringify({ error: 'Invalid JSON in request body' }),
+        JSON.stringify({ error: 'Invalid JSON in request body', details: e.message }),
         {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
           status: 400,
