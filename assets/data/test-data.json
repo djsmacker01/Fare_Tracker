@@ -1,0 +1,445 @@
+{
+    "metadata": {
+      "version": "1.0.0",
+      "purpose": "Testing datasets for fare tracker validation",
+      "lastUpdated": "2025-06-12T10:30:00Z",
+      "testSuites": ["unit", "integration", "e2e", "performance"]
+    },
+  
+    "testScenarios": {
+      "priceTracking": {
+        "normalConditions": {
+          "description": "Standard price tracking without external factors",
+          "initialPrices": { "uber": 25.00, "bolt": 23.00, "taxi": 30.00 },
+          "expectedVariation": { "min": 0.95, "max": 1.05 },
+          "updateFrequency": 3000,
+          "duration": 30000
+        },
+        "surgeConditions": {
+          "description": "High demand surge pricing scenario",
+          "initialPrices": { "uber": 35.00, "bolt": 32.00, "taxi": 40.00 },
+          "surgeMultiplier": 1.5,
+          "expectedVariation": { "min": 1.3, "max": 1.8 },
+          "duration": 60000
+        },
+        "weatherImpact": {
+          "description": "Price changes due to weather conditions",
+          "basePrice": 25.00,
+          "weatherConditions": {
+            "rain": { "multiplier": 1.3, "description": "Light rain impact" },
+            "heavyRain": { "multiplier": 1.5, "description": "Heavy rain impact" },
+            "snow": { "multiplier": 1.7, "description": "Snow impact" }
+          }
+        }
+      },
+  
+      "aiResponses": {
+        "priceQueries": [
+          {
+            "input": "What's the current price?",
+            "expectedKeywords": ["current", "price", "$"],
+            "responseType": "price_info"
+          },
+          {
+            "input": "When will prices drop?",
+            "expectedKeywords": ["predict", "drop", "time"],
+            "responseType": "price_forecast"
+          },
+          {
+            "input": "Best time to travel?",
+            "expectedKeywords": ["optimal", "time", "travel"],
+            "responseType": "timing_advice"
+          }
+        ],
+        "weatherQueries": [
+          {
+            "input": "Will rain affect prices?",
+            "expectedKeywords": ["rain", "weather", "impact"],
+            "responseType": "weather_analysis"
+          },
+          {
+            "input": "Weather impact on fares?",
+            "expectedKeywords": ["weather", "fares", "impact"],
+            "responseType": "weather_analysis"
+          }
+        ],
+        "optimizationQueries": [
+          {
+            "input": "How can I save money?",
+            "expectedKeywords": ["save", "money", "tips"],
+            "responseType": "optimization_tips"
+          },
+          {
+            "input": "Cheapest option?",
+            "expectedKeywords": ["cheapest", "best", "value"],
+            "responseType": "service_comparison"
+          }
+        ]
+      },
+  
+      "alertSystem": {
+        "priceAlerts": [
+          {
+            "testName": "Alert triggers when price drops below threshold",
+            "alertPrice": 25.00,
+            "currentPrice": 24.50,
+            "shouldTrigger": true,
+            "expectedMessage": "Price alert triggered"
+          },
+          {
+            "testName": "Alert does not trigger when price above threshold",
+            "alertPrice": 25.00,
+            "currentPrice": 26.50,
+            "shouldTrigger": false,
+            "expectedMessage": "Monitoring for optimal pricing"
+          },
+          {
+            "testName": "Alert triggers exactly at threshold",
+            "alertPrice": 25.00,
+            "currentPrice": 25.00,
+            "shouldTrigger": true,
+            "expectedMessage": "Price alert triggered"
+          }
+        ]
+      },
+  
+      "chartRendering": {
+        "priceHistory": {
+          "testData": [
+            { "time": "09:00", "uber": 22, "bolt": 20, "taxi": 28, "predicted": 24 },
+            { "time": "09:30", "uber": 25, "bolt": 23, "taxi": 30, "predicted": 26 },
+            { "time": "10:00", "uber": 28, "bolt": 26, "taxi": 32, "predicted": 29 },
+            { "time": "10:30", "uber": 30, "bolt": 28, "taxi": 35, "predicted": 31 }
+          ],
+          "expectedElements": ["canvas", "legend", "tooltip"],
+          "expectedDatasets": 4
+        },
+        "peakHours": {
+          "testData": [
+            { "hour": "6AM", "demand": 30, "avgPrice": 22, "efficiency": 85 },
+            { "hour": "7AM", "demand": 85, "avgPrice": 35, "efficiency": 45 },
+            { "hour": "8AM", "demand": 95, "avgPrice": 42, "efficiency": 25 }
+          ],
+          "expectedType": "bar",
+          "expectedDatasets": 2
+        }
+      }
+    },
+  
+    "performanceTests": {
+      "dataProcessing": {
+        "largePriceHistory": {
+          "description": "Test with 1000+ price history entries",
+          "entryCount": 1000,
+          "expectedLoadTime": 2000,
+          "memoryLimit": "50MB"
+        },
+        "realTimeUpdates": {
+          "description": "Continuous price updates for 5 minutes",
+          "updateInterval": 1000,
+          "duration": 300000,
+          "maxCpuUsage": 20
+        }
+      },
+      "chartPerformance": {
+        "largeDataset": {
+          "description": "Chart rendering with 500+ data points",
+          "dataPoints": 500,
+          "expectedRenderTime": 1000,
+          "animationDuration": 1000
+        },
+        "multipleCharts": {
+          "description": "Multiple charts updating simultaneously",
+          "chartCount": 3,
+          "updateFrequency": 2000,
+          "expectedFrameRate": 60
+        }
+      }
+    },
+  
+    "edgeCases": {
+      "invalidData": {
+        "malformedPrices": [
+          { "uber": "invalid", "bolt": 23.5, "taxi": 30.0 },
+          { "uber": -5.0, "bolt": 23.5, "taxi": 30.0 },
+          { "uber": null, "bolt": 23.5, "taxi": 30.0 },
+          { "uber": undefined, "bolt": 23.5, "taxi": 30.0 }
+        ],
+        "extremePrices": [
+          { "uber": 0.01, "bolt": 0.01, "taxi": 0.01 },
+          { "uber": 999.99, "bolt": 999.99, "taxi": 999.99 }
+        ]
+      },
+      "networkConditions": {
+        "slowConnection": {
+          "description": "Simulate slow network responses",
+          "delay": 5000,
+          "expectedBehavior": "loading_indicator"
+        },
+        "failedRequests": {
+          "description": "Handle API failures gracefully",
+          "errorRate": 0.5,
+          "expectedBehavior": "error_handling"
+        },
+        "offlineMode": {
+          "description": "App behavior when offline",
+          "networkStatus": false,
+          "expectedBehavior": "cached_data"
+        }
+      },
+      "userInteractions": {
+        "rapidClicks": {
+          "description": "Multiple rapid clicks on tracking button",
+          "clickCount": 10,
+          "interval": 100,
+          "expectedBehavior": "debounced_response"
+        },
+        "invalidInput": {
+          "description": "Invalid alert price inputs",
+          "inputs": [-10, 0, "abc", "", null],
+          "expectedBehavior": "validation_error"
+        }
+      }
+    },
+  
+    "accessibilityTests": {
+      "keyboardNavigation": {
+        "tabOrder": [
+          "from-location",
+          "to-location", 
+          "tracking-toggle",
+          "alert-price",
+          "message-input",
+          "send-message"
+        ],
+        "shortcuts": {
+          "Ctrl+1": "dashboard_tab",
+          "Ctrl+2": "ai_chat_tab",
+          "Ctrl+3": "workflows_tab",
+          "Escape": "close_modals"
+        }
+      },
+      "screenReader": {
+        "ariaLabels": [
+          "main navigation",
+          "price tracking dashboard",
+          "AI assistant chat",
+          "workflow status"
+        ],
+        "announcements": [
+          "price_alert_triggered",
+          "tracking_started",
+          "tracking_stopped"
+        ]
+      }
+    },
+  
+    "securityTests": {
+      "inputValidation": {
+        "xssAttempts": [
+          "<script>alert('xss')</script>",
+          "javascript:alert('xss')",
+          "<img src=x onerror=alert('xss')>"
+        ],
+        "sqlInjection": [
+          "'; DROP TABLE users; --",
+          "1' OR '1'='1",
+          "UNION SELECT * FROM passwords"
+        ]
+      },
+      "dataProtection": {
+        "sensitiveData": [
+          "location_history",
+          "price_preferences", 
+          "chat_messages"
+        ],
+        "encryption": "localStorage_obfuscation",
+        "dataRetention": "30_days"
+      }
+    },
+  
+    "compatibilityTests": {
+      "browsers": [
+        {
+          "name": "Chrome",
+          "versions": ["latest", "latest-1", "latest-2"],
+          "features": ["all_supported"]
+        },
+        {
+          "name": "Firefox", 
+          "versions": ["latest", "latest-1"],
+          "features": ["all_supported"]
+        },
+        {
+          "name": "Safari",
+          "versions": ["latest", "latest-1"],
+          "features": ["chart_animations_limited"]
+        },
+        {
+          "name": "Edge",
+          "versions": ["latest"],
+          "features": ["all_supported"]
+        }
+      ],
+      "devices": [
+        {
+          "type": "desktop",
+          "resolutions": ["1920x1080", "1366x768", "1440x900"],
+          "expectedLayout": "three_column"
+        },
+        {
+          "type": "tablet",
+          "resolutions": ["768x1024", "1024x768"],
+          "expectedLayout": "two_column"
+        },
+        {
+          "type": "mobile",
+          "resolutions": ["375x667", "414x896", "360x640"],
+          "expectedLayout": "single_column"
+        }
+      ]
+    },
+  
+    "loadTests": {
+      "concurrentUsers": {
+        "light": { "users": 10, "duration": "1m" },
+        "moderate": { "users": 50, "duration": "5m" },
+        "heavy": { "users": 100, "duration": "10m" }
+      },
+      "dataVolume": {
+        "priceHistory": {
+          "small": 100,
+          "medium": 1000,
+          "large": 10000
+        },
+        "chatMessages": {
+          "small": 50,
+          "medium": 500,
+          "large": 5000
+        }
+      }
+    },
+  
+    "regressionTests": {
+      "criticalPaths": [
+        {
+          "name": "price_tracking_flow",
+          "steps": [
+            "set_route",
+            "set_alert_price", 
+            "start_tracking",
+            "verify_price_updates",
+            "verify_alert_trigger",
+            "stop_tracking"
+          ]
+        },
+        {
+          "name": "ai_assistant_flow",
+          "steps": [
+            "send_message",
+            "verify_response",
+            "check_suggestions",
+            "verify_context_awareness"
+          ]
+        },
+        {
+          "name": "chart_visualization_flow",
+          "steps": [
+            "load_price_history",
+            "render_chart",
+            "verify_data_accuracy",
+            "test_interactivity"
+          ]
+        }
+      ]
+    },
+  
+    "mockApiResponses": {
+      "priceUpdate": {
+        "success": {
+          "status": 200,
+          "data": {
+            "uber": 28.50,
+            "bolt": 26.80,
+            "taxi": 32.00,
+            "timestamp": "2025-06-12T10:30:00Z"
+          }
+        },
+        "error": {
+          "status": 500,
+          "error": "Service temporarily unavailable"
+        },
+        "timeout": {
+          "status": 408,
+          "error": "Request timeout"
+        }
+      },
+      "weatherData": {
+        "success": {
+          "status": 200,
+          "data": {
+            "condition": "rain",
+            "intensity": "moderate",
+            "forecast": "continuing_2_hours"
+          }
+        }
+      }
+    },
+  
+    "validationRules": {
+      "alertPrice": {
+        "min": 5.00,
+        "max": 200.00,
+        "step": 0.50,
+        "required": true
+      },
+      "location": {
+        "minLength": 2,
+        "maxLength": 100,
+        "pattern": "^[a-zA-Z0-9\\s\\-,]+$",
+        "required": true
+      },
+      "chatMessage": {
+        "minLength": 1,
+        "maxLength": 1000,
+        "required": true
+      }
+    },
+  
+    "expectedBehaviors": {
+      "tracking": {
+        "start": {
+          "button_text": "Stop AI Tracking",
+          "button_class": "tracking-btn stop",
+          "interval_active": true
+        },
+        "stop": {
+          "button_text": "Start AI Tracking", 
+          "button_class": "tracking-btn start",
+          "interval_active": false
+        }
+      },
+      "alerts": {
+        "triggered": {
+          "notification_shown": true,
+          "ai_message_sent": true,
+          "status_updated": true
+        },
+        "not_triggered": {
+          "notification_shown": false,
+          "monitoring_status": "active"
+        }
+      },
+      "charts": {
+        "update": {
+          "data_refreshed": true,
+          "animation_played": true,
+          "legend_updated": true
+        },
+        "resize": {
+          "canvas_resized": true,
+          "responsive_layout": true
+        }
+      }
+    }
+  }
