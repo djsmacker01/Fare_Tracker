@@ -208,8 +208,8 @@ const addPredictionData = (chart, predictionData) => {
   chart.update();
 };
 
-// Export configurations and utility functions
-export {
+// Make configurations and utility functions available globally
+window.chartConfigs = {
   priceHistoryConfig,
   demandAnalysisConfig,
   trendVisualizationConfig,
