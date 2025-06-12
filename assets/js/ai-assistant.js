@@ -1,16 +1,4 @@
-/**
- * Fare Tracker - AI Assistant Module
- * Description: Handles AI chat functionality and intelligent responses
- * Author: Your Name
- * Created: 2024
- *
- * This module provides:
- * - Conversational AI interface
- * - Contextual transportation advice
- * - Natural language processing simulation
- * - Response generation and management
- * - Chat history and state management
- */
+
 
 "use strict";
 
