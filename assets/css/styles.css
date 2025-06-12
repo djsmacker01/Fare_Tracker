@@ -1,21 +1,5 @@
 /**
- * Fare Tracker - Main Stylesheet
- * Description: Core styles for the AI-powered fare tracking application
- * Author: Your Name
- * Created: 2024
- * 
- * Table of Contents:
- * 1. CSS Custom Properties (Variables)
- * 2. Reset and Base Styles
- * 3. Accessibility Styles
- * 4. Typography
- * 5. Layout Components
- * 6. Navigation
- * 7. Content Sections
- * 8. Interactive Elements
- * 9. Data Visualization
- * 10. Utility Classes
- */
+
 
 /* ===== 1. CSS CUSTOM PROPERTIES ===== */
 :root {
@@ -779,6 +763,24 @@ a:hover {
     margin-bottom: var(--spacing-xl);
 }
 
+.chart-section {
+    background: var(--bg-primary);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.chart-section .chart-container {
+    position: relative;
+    height: 300px;
+    margin-top: var(--spacing-lg);
+}
+
+#peak-hours-chart {
+    width: 100%;
+    height: 100%;
+}
+
 .chart-container {
     background: var(--bg-primary);
     border-radius: var(--radius-2xl);
@@ -1472,4 +1474,5 @@ a:hover {
 }
 
 .opacity-100 {
-    opacity: 1; }
+    opacity: 1;
+}
