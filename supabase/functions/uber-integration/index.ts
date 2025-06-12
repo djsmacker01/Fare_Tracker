@@ -42,76 +42,27 @@ serve(async (req) => {
       Deno.env.get('ANON_KEY') ?? ''
     )
 
-    // Get request body
-    const text = await req.text()
-    console.log('Raw request body:', text)
-
-    // Validate request body
-    if (!text || text.trim() === '') {
-      return new Response(
-        JSON.stringify({
-          error: 'Empty request body',
-          details: 'The request body is empty or contains only whitespace'
-        }),
-        {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 400,
-        }
-      )
-    }
-
-    let body
+    // Get request body with error handling
+    let requestData
     try {
-      body = JSON.parse(text)
-    } catch (e) {
-      return new Response(
-        JSON.stringify({
-          error: 'Invalid JSON',
-          details: e.message,
-          receivedText: text
-        }),
-        {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 400,
-        }
-      )
+      requestData = await req.json()
+    } catch (jsonError) {
+      console.error('JSON parsing error:', jsonError)
+      throw new Error('Invalid JSON in request body')
     }
 
-    console.log('Parsed request body:', body)
+    const { pickup, dropoff } = requestData
 
     // Validate required fields
-    if (!body.pickup || !body.dropoff) {
-      return new Response(
-        JSON.stringify({
-          error: 'Missing required fields',
-          details: 'Request must include pickup and dropoff locations',
-          receivedBody: body
-        }),
-        {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 400,
-        }
-      )
+    if (!pickup || !dropoff || !pickup.lat || !pickup.lng || !dropoff.lat || !dropoff.lng) {
+      throw new Error('Missing required pickup or dropoff coordinates')
     }
 
-    if (!body.pickup.lat || !body.pickup.lng || !body.dropoff.lat || !body.dropoff.lng) {
-      return new Response(
-        JSON.stringify({
-          error: 'Invalid location format',
-          details: 'Pickup and dropoff must include lat and lng coordinates',
-          receivedBody: body
-        }),
-        {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 400,
-        }
-      )
-    }
-
-    const { pickup, dropoff } = body
+    console.log('Processing request with:', { pickup, dropoff })
 
     // Use mock data instead of real API call
     const uberData = mockUberData
+    console.log('Using mock data:', uberData)
 
     // Store fare update
     const { data: fareUpdate, error: fareError } = await supabaseClient
@@ -119,9 +70,7 @@ serve(async (req) => {
       .insert({
         service: 'uber',
         price: uberData.prices[0].estimate,
-        currency: uberData.prices[0].currency_code,
-        pickup_location: pickup,
-        dropoff_location: dropoff,
+        change_percentage: 0, // No change for initial price
         created_at: new Date().toISOString()
       })
       .select()
@@ -132,17 +81,17 @@ serve(async (req) => {
       throw fareError
     }
 
-    // Store driver location with some random variation
+    // Store driver location (using a more realistic approach)
     const { data: driverLocation, error: driverError } = await supabaseClient
       .from('ride_tracking')
       .insert({
         service: 'uber',
-        driver_id: uberData.prices[0].product_id,
-        location: {
-          lat: pickup.lat + (Math.random() - 0.5) * 0.01,
-          lng: pickup.lng + (Math.random() - 0.5) * 0.01
-        },
         status: 'available',
+        location: {
+          lat: pickup.lat,
+          lng: pickup.lng
+        },
+        eta: new Date(Date.now() + 15 * 60000), // 15 minutes from now
         created_at: new Date().toISOString()
       })
       .select()
@@ -153,30 +102,31 @@ serve(async (req) => {
       throw driverError
     }
 
-    return new Response(
-      JSON.stringify({
-        success: true,
-        fareUpdate,
-        driverLocation,
-        mockData: true
-      }),
-      {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 200,
-      }
-    )
+    return new Response(JSON.stringify({
+      success: true,
+      fareUpdate,
+      driverLocation,
+      mockData: true,
+      uberResponse: uberData // Include for debugging
+    }), {
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'application/json'
+      },
+      status: 200
+    })
   } catch (error) {
-    console.error('Function error:', error)
-    return new Response(
-      JSON.stringify({
-        error: 'Function error',
-        details: error.message,
-        stack: error.stack
-      }),
-      {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 400,
-      }
-    )
+    console.error('Edge function error:', error)
+    
+    return new Response(JSON.stringify({
+      error: error.message,
+      timestamp: new Date().toISOString()
+    }), {
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'application/json'
+      },
+      status: 400
+    })
   }
 }) 

@@ -1,0 +1,27 @@
+# Ignore temporary files
+.temp/
+**/.temp/
+
+# Ignore local development files
+.env
+.env.local
+*.local
+
+# Ignore data files
+**/seed.sql
+**/sample_data.sql
+**/supabase_sample_data.sql
+
+# Ignore database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Keep migrations and schema
+!migrations/
+!migrations/*.sql
+!supabase_tables.sql
+
+# Ignore logs and debug
+*.log
+.debug/ 
