@@ -1,0 +1,933 @@
+/**
+ * Fare Tracker - Responsive Stylesheet
+ * Description: Media queries and responsive design adaptations
+ * Author: Your Name
+ * Created: 2024
+ * 
+ * Breakpoint System:
+ * - Mobile: 0px - 767px
+ * - Tablet: 768px - 1023px  
+ * - Desktop: 1024px - 1199px
+ * - Large Desktop: 1200px+
+ */
+
+/* ===== LARGE DESKTOP (1200px+) ===== */
+@media (min-width: 1200px) {
+    .main-content {
+        padding: var(--spacing-2xl) var(--spacing-xl);
+    }
+
+    .charts-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .fare-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .nav-container {
+        padding: var(--spacing-lg) var(--spacing-2xl);
+    }
+}
+
+/* ===== DESKTOP (1024px - 1199px) ===== */
+@media (max-width: 1199px) and (min-width: 1024px) {
+    .main-content {
+        padding: var(--spacing-xl) var(--spacing-lg);
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .alerts-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .workflow-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===== TABLET (768px - 1023px) ===== */
+@media (max-width: 1023px) and (min-width: 768px) {
+
+    /* Navigation Adjustments */
+    .nav-container {
+        padding: var(--spacing-md) var(--spacing-lg);
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+    }
+
+    .brand-title {
+        font-size: var(--font-size-xl);
+    }
+
+    .nav-menu {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        background: var(--color-neutral-50);
+        padding: var(--spacing-md);
+        border-radius: var(--radius-lg);
+        margin-top: var(--spacing-md);
+    }
+
+    .nav-tab {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+
+    /* Main Content */
+    .main-content {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    /* Route Setup */
+    .route-form {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .context-indicators {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    /* Current Fares */
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .fare-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    /* Charts */
+    .charts-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .chart-wrapper {
+        height: 250px;
+    }
+
+    .chart-legend {
+        gap: var(--spacing-md);
+    }
+
+    /* Alerts */
+    .alerts-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    /* AI Recommendations */
+    .recommendation-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-md);
+    }
+
+    .apply-btn {
+        align-self: flex-start;
+    }
+
+    /* AI Chat */
+    .ai-chat-container {
+        height: 500px;
+    }
+
+    .message-bubble {
+        max-width: 85%;
+    }
+
+    .quick-suggestions {
+        gap: var(--spacing-xs);
+    }
+
+    .suggestion-btn {
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    /* Workflows */
+    .workflow-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .api-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    /* Performance Optimizations */
+    .insight-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .insight-priority {
+        align-self: flex-start;
+    }
+}
+
+/* ===== MOBILE (320px - 767px) ===== */
+@media (max-width: 767px) {
+
+    /* Reset some desktop styles */
+    .nav-container {
+        padding: var(--spacing-md);
+        flex-wrap: nowrap;
+    }
+
+    /* Mobile Navigation */
+    .mobile-menu-btn {
+        display: flex;
+        z-index: var(--z-dropdown);
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow-xl);
+        border-top: 1px solid var(--color-neutral-200);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition-normal);
+        z-index: var(--z-fixed);
+    }
+
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-tab {
+        width: 100%;
+        justify-content: center;
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+        border-radius: var(--radius-lg);
+    }
+
+    /* Mobile Menu Animation */
+    .mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Brand Adjustments */
+    .brand-title {
+        font-size: var(--font-size-lg);
+    }
+
+    .brand-subtitle {
+        display: none;
+    }
+
+    .brand-icon {
+        font-size: var(--font-size-xl);
+    }
+
+    /* Main Content */
+    .main-content {
+        padding: var(--spacing-md);
+    }
+
+    /* AI Insights Banner */
+    .ai-insights-banner {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .insight-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .insight-header {
+        width: 100%;
+    }
+
+    .insight-title {
+        font-size: var(--font-size-base);
+    }
+
+    .insight-message {
+        font-size: var(--font-size-sm);
+    }
+
+    /* Section Titles */
+    .section-title {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-md);
+        flex-wrap: wrap;
+    }
+
+    .section-icon {
+        font-size: var(--font-size-lg);
+    }
+
+    /* Route Setup */
+    .route-setup {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .route-form {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .location-input {
+        padding: var(--spacing-md);
+        font-size: var(--font-size-base);
+    }
+
+    .context-indicators {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .context-item {
+        padding: var(--spacing-sm) var(--spacing-md);
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Current Fares */
+    .current-fares {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-md);
+    }
+
+    .tracking-btn {
+        width: 100%;
+        justify-content: center;
+        padding: var(--spacing-md);
+    }
+
+    .fare-cards {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .fare-card {
+        padding: var(--spacing-md);
+    }
+
+    .card-header {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .fare-price {
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .price-change {
+        font-size: var(--font-size-xs);
+    }
+
+    /* AI Recommendations */
+    .ai-recommendations {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .recommendation-item {
+        flex-direction: column;
+        align-items: stretch;
+        padding: var(--spacing-md);
+        gap: var(--spacing-md);
+    }
+
+    .recommendation-title {
+        font-size: var(--font-size-sm);
+    }
+
+    .recommendation-description {
+        font-size: var(--font-size-xs);
+    }
+
+    .recommendation-impact {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+
+    .apply-btn {
+        align-self: stretch;
+        text-align: center;
+    }
+
+    /* Charts */
+    .charts-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .chart-container {
+        padding: var(--spacing-lg);
+    }
+
+    .chart-wrapper {
+        height: 200px;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .chart-legend {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+
+    .legend-item {
+        justify-content: center;
+    }
+
+    .legend-text {
+        font-size: var(--font-size-xs);
+    }
+
+    /* Best Times */
+    .best-time-item {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+
+    .time-info {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    .time-details {
+        text-align: center;
+    }
+
+    /* Alerts */
+    .alerts-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .alerts-setup,
+    .recent-alerts {
+        padding: var(--spacing-lg);
+    }
+
+    .price-input-container {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .price-input {
+        padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 2.5rem;
+    }
+
+    .alert-status {
+        padding: var(--spacing-sm) var(--spacing-md);
+        text-align: center;
+    }
+
+    .alert-item {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .alert-header {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+
+    .alert-service {
+        justify-content: center;
+    }
+
+    .alert-details {
+        text-align: center;
+    }
+
+    /* AI Chat */
+    .ai-chat-container {
+        height: 450px;
+    }
+
+    .chat-header {
+        padding: var(--spacing-md);
+    }
+
+    .chat-messages {
+        padding: var(--spacing-md);
+        gap: var(--spacing-md);
+    }
+
+    .message-bubble {
+        max-width: 90%;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .message-text {
+        font-size: var(--font-size-sm);
+    }
+
+    .chat-input-form {
+        padding: var(--spacing-md);
+    }
+
+    .input-container {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .chat-input {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+
+    .send-btn {
+        padding: var(--spacing-sm);
+        min-width: 44px;
+    }
+
+    .quick-suggestions {
+        gap: var(--spacing-xs);
+    }
+
+    .suggestion-btn {
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        white-space: nowrap;
+    }
+
+    /* Workflows */
+    .workflow-status,
+    .performance-metrics,
+    .api-integrations {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .workflow-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .workflow-item {
+        padding: var(--spacing-md);
+    }
+
+    .workflow-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .metric-item {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        text-align: center;
+        padding: var(--spacing-md);
+    }
+
+    .metric-value {
+        font-size: var(--font-size-2xl);
+    }
+
+    .api-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .api-item {
+        padding: var(--spacing-sm);
+    }
+
+    .api-name {
+        font-size: var(--font-size-xs);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    /* Footer */
+    .footer {
+        padding: var(--spacing-lg) var(--spacing-md);
+        margin-top: var(--spacing-2xl);
+    }
+
+    .footer-text {
+        font-size: var(--font-size-xs);
+        line-height: var(--line-height-relaxed);
+    }
+
+    .footer-credits {
+        font-size: var(--font-size-xs);
+    }
+
+    /* Loading States */
+    .loading-spinner {
+        width: 32px;
+        height: 32px;
+        border-width: 3px;
+    }
+
+    .loading-text {
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* ===== SMALL MOBILE (320px - 479px) ===== */
+@media (max-width: 479px) {
+
+    /* Further mobile optimizations for very small screens */
+    .main-content {
+        padding: var(--spacing-sm);
+    }
+
+    .route-setup,
+    .current-fares,
+    .ai-recommendations,
+    .chart-container,
+    .alerts-setup,
+    .recent-alerts,
+    .workflow-status,
+    .performance-metrics,
+    .api-integrations {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .brand-title {
+        font-size: var(--font-size-base);
+    }
+
+    .section-title {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .fare-price {
+        font-size: var(--font-size-xl);
+    }
+
+    .chart-wrapper {
+        height: 180px;
+    }
+
+    .ai-chat-container {
+        height: 400px;
+    }
+
+    .chart-legend {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xs);
+    }
+
+    .context-indicators {
+        gap: var(--spacing-xs);
+    }
+
+    .context-item {
+        padding: var(--spacing-sm);
+    }
+
+    .context-text {
+        gap: 2px;
+    }
+
+    .context-value,
+    .context-label {
+        font-size: var(--font-size-xs);
+    }
+
+    .api-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-suggestions {
+        flex-direction: column;
+    }
+
+    .suggestion-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ===== LANDSCAPE MOBILE ORIENTATION ===== */
+@media (max-width: 767px) and (orientation: landscape) {
+    .ai-chat-container {
+        height: 350px;
+    }
+
+    .chat-messages {
+        padding: var(--spacing-sm);
+    }
+
+    .chart-wrapper {
+        height: 160px;
+    }
+
+    .main-content {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .route-setup,
+    .current-fares,
+    .ai-recommendations,
+    .chart-container,
+    .alerts-setup,
+    .recent-alerts {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+/* ===== HIGH DPI DISPLAYS ===== */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+    /* Optimize for retina displays */
+    .brand-icon,
+    .section-icon,
+    .service-icon,
+    .context-icon,
+    .nav-icon {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .chart-wrapper canvas {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    * {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    .header,
+    .footer,
+    .mobile-menu-btn,
+    .tracking-btn,
+    .apply-btn,
+    .send-btn,
+    .suggestion-btn,
+    .nav-menu,
+    .ai-chat-container,
+    .loading-overlay {
+        display: none !important;
+    }
+
+    .main-content {
+        padding: 0;
+        max-width: none;
+    }
+
+    .ai-insights-banner,
+    .route-setup,
+    .current-fares,
+    .chart-container,
+    .alerts-setup {
+        break-inside: avoid;
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+    }
+
+    .section-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .fare-card {
+        border: 1px solid #999;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .fare-price {
+        font-size: 24px;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 12px;
+        color: #666;
+    }
+
+    .visually-hidden {
+        position: static !important;
+        clip: auto !important;
+        height: auto !important;
+        width: auto !important;
+        overflow: visible !important;
+    }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .loading-spinner {
+        animation: none;
+        border: 4px solid var(--color-primary);
+    }
+
+    .tab-content {
+        animation: none;
+    }
+
+    .hamburger-line {
+        transition: none;
+    }
+}
+
+/* ===== DARK MODE PREFERENCE ===== */
+@media (prefers-color-scheme: dark) {
+    /* Optional: Add dark mode styles if needed */
+    /* This would be implemented if dark mode support is required */
+
+    .loading-overlay {
+        background: rgba(17, 24, 39, 0.95);
+    }
+
+    .loading-text {
+        color: var(--color-neutral-300);
+    }
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
+@media (pointer: coarse) {
+
+    /* Increase tap targets for touch devices */
+    .nav-tab,
+    .tracking-btn,
+    .fare-card,
+    .apply-btn,
+    .send-btn,
+    .suggestion-btn,
+    .mobile-menu-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .location-input,
+    .price-input,
+    .chat-input {
+        min-height: 44px;
+    }
+
+    /* Improve scrolling on touch devices */
+    .chat-messages {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+
+    /* Remove hover effects on touch devices */
+    .fare-card:hover,
+    .recommendation-item:hover,
+    .tracking-btn:hover,
+    .apply-btn:hover,
+    .send-btn:hover,
+    .suggestion-btn:hover {
+        transform: none;
+    }
+
+    /* Add active states for better touch feedback */
+    .fare-card:active,
+    .tracking-btn:active,
+    .apply-btn:active,
+    .send-btn:active,
+    .suggestion-btn:active {
+        transform: scale(0.98);
+    }
+}
+
+/* ===== KEYBOARD NAVIGATION IMPROVEMENTS ===== */
+@media (pointer: fine) {
+
+    /* Enhanced focus styles for mouse/keyboard users */
+    .fare-card:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .nav-tab:focus,
+    .tracking-btn:focus,
+    .apply-btn:focus,
+    .send-btn:focus,
+    .suggestion-btn:focus {
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+}
+
+/* ===== CONTAINER QUERIES (Future Enhancement) ===== */
+/* Note: Container queries are not widely supported yet but included for future use */
+/*
+@container (max-width: 400px) {
+  .fare-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@container (min-width: 600px) {
+  .fare-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+*/

@@ -1,0 +1,12 @@
+{
+  "name": "fare_tracker",
+  "version": "1.0.0",
+  "description": "**Fare Tracker** is a responsive front-end web application that empowers users to monitor and optimize their transportation costs across multiple ride-sharing and taxi services. With features like real-time fare tracking, price alerts, and intelligent travel insights, the platform helps commuters make smarter travel decisions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
