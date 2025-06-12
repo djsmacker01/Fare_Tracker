@@ -1,0 +1,373 @@
+{
+    "metadata": {
+      "version": "1.0.0",
+      "lastUpdated": "2025-06-12T10:30:00Z",
+      "description": "Mock data for fare tracker development and testing"
+    },
+    
+    "services": [
+      {
+        "id": "uber",
+        "name": "Uber",
+        "color": "#000000",
+        "icon": "car",
+        "basePrice": 25.00,
+        "surgeMultiplier": 1.0,
+        "availability": "24/7",
+        "estimatedArrival": "3-5 min"
+      },
+      {
+        "id": "bolt",
+        "name": "Bolt",
+        "color": "#34C759",
+        "icon": "navigation",
+        "basePrice": 23.00,
+        "surgeMultiplier": 0.9,
+        "availability": "24/7",
+        "estimatedArrival": "4-6 min"
+      },
+      {
+        "id": "taxi",
+        "name": "Taxi",
+        "color": "#FF9500",
+        "icon": "car",
+        "basePrice": 30.00,
+        "surgeMultiplier": 1.1,
+        "availability": "24/7",
+        "estimatedArrival": "5-8 min"
+      }
+    ],
+  
+    "routes": [
+      {
+        "from": "Cardiff",
+        "to": "Newport",
+        "distance": "15.2 km",
+        "estimatedTime": "18-25 min",
+        "baseMultiplier": 1.2,
+        "popularity": "high"
+      },
+      {
+        "from": "Newport",
+        "to": "Cardiff",
+        "distance": "15.2 km",
+        "estimatedTime": "16-23 min",
+        "baseMultiplier": 1.1,
+        "popularity": "high"
+      },
+      {
+        "from": "Cardiff",
+        "to": "London",
+        "distance": "239.9  km",
+        "estimatedTime": "3-3:30 hrs",
+        "baseMultiplier": 5.9,
+        "popularity": "high"
+      },
+      {
+        "from": "London",
+        "to": "Cardiff",
+        "distance": "239.5 km",
+        "estimatedTime": "3-3:25 hrs",
+        "baseMultiplier": 5.8,
+        "popularity": "high"
+      },
+      {
+        "from": "Airport",
+        "to": "Stadium",
+        "distance": "22.3 km",
+        "estimatedTime": "28-35 min",
+        "baseMultiplier": 1.5,
+        "popularity": "low"
+      }
+    ],
+  
+    "priceHistory": [
+      { "time": "06:00", "uber": 22.50, "bolt": 20.00, "taxi": 28.00, "predicted": 24.00 },
+      { "time": "06:30", "uber": 25.00, "bolt": 22.50, "taxi": 30.00, "predicted": 26.00 },
+      { "time": "07:00", "uber": 35.00, "bolt": 32.00, "taxi": 40.00, "predicted": 34.00 },
+      { "time": "07:30", "uber": 38.50, "bolt": 35.00, "taxi": 42.50, "predicted": 37.00 },
+      { "time": "08:00", "uber": 42.00, "bolt": 38.00, "taxi": 45.00, "predicted": 40.00 },
+      { "time": "08:30", "uber": 38.00, "bolt": 35.50, "taxi": 42.00, "predicted": 37.50 },
+      { "time": "09:00", "uber": 30.00, "bolt": 28.00, "taxi": 35.00, "predicted": 29.00 },
+      { "time": "09:30", "uber": 27.50, "bolt": 25.50, "taxi": 32.00, "predicted": 27.00 },
+      { "time": "10:00", "uber": 25.00, "bolt": 23.00, "taxi": 30.00, "predicted": 25.00 },
+      { "time": "10:30", "uber": 26.50, "bolt": 24.00, "taxi": 31.00, "predicted": 26.00 },
+      { "time": "11:00", "uber": 28.00, "bolt": 26.00, "taxi": 32.00, "predicted": 27.00 },
+      { "time": "11:30", "uber": 30.00, "bolt": 28.50, "taxi": 34.00, "predicted": 29.50 },
+      { "time": "12:00", "uber": 32.00, "bolt": 30.00, "taxi": 36.00, "predicted": 31.00 },
+      { "time": "12:30", "uber": 31.00, "bolt": 29.00, "taxi": 35.00, "predicted": 30.00 },
+      { "time": "13:00", "uber": 30.50, "bolt": 28.50, "taxi": 34.50, "predicted": 29.50 },
+      { "time": "13:30", "uber": 29.00, "bolt": 27.00, "taxi": 33.00, "predicted": 28.00 },
+      { "time": "14:00", "uber": 27.50, "bolt": 25.50, "taxi": 31.50, "predicted": 26.50 },
+      { "time": "14:30", "uber": 28.50, "bolt": 26.50, "taxi": 32.50, "predicted": 27.50 },
+      { "time": "15:00", "uber": 35.00, "bolt": 32.00, "taxi": 38.00, "predicted": 34.00 }
+    ],
+  
+    "peakHours": [
+      { "hour": "6AM", "demand": 30, "avgPrice": 22.50, "efficiency": 85 },
+      { "hour": "7AM", "demand": 85, "avgPrice": 35.00, "efficiency": 45 },
+      { "hour": "8AM", "demand": 95, "avgPrice": 42.00, "efficiency": 25 },
+      { "hour": "9AM", "demand": 70, "avgPrice": 30.00, "efficiency": 60 },
+      { "hour": "10AM", "demand": 40, "avgPrice": 25.00, "efficiency": 90 },
+      { "hour": "11AM", "demand": 45, "avgPrice": 28.00, "efficiency": 85 },
+      { "hour": "12PM", "demand": 60, "avgPrice": 32.00, "efficiency": 70 },
+      { "hour": "1PM", "demand": 55, "avgPrice": 30.50, "efficiency": 75 },
+      { "hour": "2PM", "demand": 50, "avgPrice": 29.00, "efficiency": 80 },
+      { "hour": "3PM", "demand": 65, "avgPrice": 33.00, "efficiency": 65 },
+      { "hour": "4PM", "demand": 75, "avgPrice": 36.00, "efficiency": 55 },
+      { "hour": "5PM", "demand": 90, "avgPrice": 40.00, "efficiency": 35 },
+      { "hour": "6PM", "demand": 85, "avgPrice": 38.50, "efficiency": 40 },
+      { "hour": "7PM", "demand": 70, "avgPrice": 34.00, "efficiency": 60 },
+      { "hour": "8PM", "demand": 65, "avgPrice": 32.50, "efficiency": 65 },
+      { "hour": "9PM", "demand": 55, "avgPrice": 30.00, "efficiency": 75 },
+      { "hour": "10PM", "demand": 45, "avgPrice": 28.00, "efficiency": 80 },
+      { "hour": "11PM", "demand": 35, "avgPrice": 26.00, "efficiency": 85 }
+    ],
+  
+    "contextFactors": {
+      "weather": {
+        "clear": { "multiplier": 1.0, "description": "Normal pricing conditions" },
+        "cloudy": { "multiplier": 1.05, "description": "Slight increase in demand" },
+        "rain": { "multiplier": 1.3, "description": "High demand due to weather" },
+        "snow": { "multiplier": 1.5, "description": "Very high demand, limited supply" },
+        "storm": { "multiplier": 1.7, "description": "Extreme weather conditions" }
+      },
+      "traffic": {
+        "light": { "multiplier": 0.95, "description": "Faster trips, lower prices" },
+        "moderate": { "multiplier": 1.0, "description": "Normal traffic conditions" },
+        "heavy": { "multiplier": 1.2, "description": "Slower trips, higher demand" },
+        "congested": { "multiplier": 1.4, "description": "Severe traffic delays" }
+      },
+      "events": {
+        "none": { "multiplier": 1.0, "description": "No major events" },
+        "concert": { "multiplier": 1.15, "description": "Entertainment venue event" },
+        "sports": { "multiplier": 1.25, "description": "Stadium event" },
+        "conference": { "multiplier": 1.1, "description": "Business event" },
+        "festival": { "multiplier": 1.3, "description": "Large public gathering" },
+        "emergency": { "multiplier": 1.8, "description": "Emergency situation" }
+      }
+    },
+  
+    "aiResponses": {
+      "priceOptimization": [
+        "Based on historical data, prices typically drop 15% in the next 30 minutes.",
+        "Current surge is 20% above normal. Consider waiting 15 minutes for better rates.",
+        "This is an optimal booking window - prices are 12% below daily average.",
+        "Weather forecast indicates price increases in 45 minutes due to rain.",
+        "Event traffic will cause 25% price surge starting at 7 PM."
+      ],
+      "routeRecommendations": [
+        "Alternative route via Highway 101 saves $4 but adds 8 minutes.",
+        "Taking subway to Central Station then ride-share saves $12 total.",
+        "Current route is optimal - fastest and most cost-effective option.",
+        "Consider splitting journey: walk 0.3 miles to save $6 on pickup fees.",
+        "Express lane available for $3 surcharge, saves 12 minutes."
+      ],
+      "timeOptimization": [
+        "Leaving 20 minutes earlier would save you $8.50 on this trip.",
+        "Peak demand window ends in 15 minutes - wait for 18% savings.",
+        "Morning rush pricing active until 9:30 AM - current window optimal.",
+        "Lunch hour pricing in effect - consider traveling after 2 PM for savings.",
+        "Evening surge begins at 4:30 PM - book now to avoid 30% increase."
+      ]
+    },
+  
+    "notifications": [
+      {
+        "id": 1,
+        "type": "price_alert",
+        "title": "Price Target Reached",
+        "message": "Uber fare dropped to $24.50 - book now!",
+        "timestamp": "2025-06-12T10:25:00Z",
+        "priority": "high",
+        "actionable": true
+      },
+      {
+        "id": 2,
+        "type": "weather_warning",
+        "title": "Weather Impact Alert",
+        "message": "Rain expected in 30 minutes - demand will increase",
+        "timestamp": "2025-06-12T10:20:00Z",
+        "priority": "medium",
+        "actionable": true
+      },
+      {
+        "id": 3,
+        "type": "optimization_tip",
+        "title": "Savings Opportunity",
+        "message": "Switch to Bolt for 15% savings with same ETA",
+        "timestamp": "2025-06-12T10:15:00Z",
+        "priority": "low",
+        "actionable": true
+      }
+    ],
+  
+    "analytics": {
+      "userSavings": {
+        "daily": 23.50,
+        "weekly": 164.50,
+        "monthly": 657.20,
+        "total": 2847.80
+      },
+      "predictionAccuracy": {
+        "priceForecasts": 94.2,
+        "trafficPredictions": 87.6,
+        "weatherImpact": 91.8,
+        "demandPatterns": 89.4
+      },
+      "usage": {
+        "totalTrips": 156,
+        "averageSavings": 18.3,
+        "optimalBookings": 89.7,
+        "alertResponseRate": 76.4
+      }
+    },
+  
+    "workflows": {
+      "priceMonitor": {
+        "status": "running",
+        "lastRun": "2 min ago",
+        "frequency": "every 30 seconds",
+        "dataPoints": 2847,
+        "accuracy": 94.2
+      },
+      "weatherAnalyzer": {
+        "status": "running",
+        "lastRun": "5 min ago",
+        "frequency": "every 5 minutes",
+        "dataPoints": 423,
+        "accuracy": 91.8
+      },
+      "eventTracker": {
+        "status": "running",
+        "lastRun": "1 hour ago",
+        "frequency": "every hour",
+        "dataPoints": 67,
+        "accuracy": 88.5
+      },
+      "aiProcessor": {
+        "status": "running",
+        "lastRun": "30 sec ago",
+        "frequency": "continuous",
+        "dataPoints": 15847,
+        "accuracy": 92.1
+      }
+    },
+  
+    "apiIntegrations": [
+      {
+        "name": "Uber API",
+        "status": "active",
+        "dailyCalls": 1247,
+        "monthlyLimit": 50000,
+        "responseTime": "120ms",
+        "uptime": 99.8
+      },
+      {
+        "name": "Lyft API",
+        "status": "active",
+        "dailyCalls": 987,
+        "monthlyLimit": 30000,
+        "responseTime": "145ms",
+        "uptime": 99.6
+      },
+      {
+        "name": "Weather API",
+        "status": "active",
+        "dailyCalls": 145,
+        "monthlyLimit": 5000,
+        "responseTime": "89ms",
+        "uptime": 99.9
+      },
+      {
+        "name": "Traffic API",
+        "status": "active",
+        "dailyCalls": 423,
+        "monthlyLimit": 15000,
+        "responseTime": "167ms",
+        "uptime": 99.7
+      },
+      {
+        "name": "Events API",
+        "status": "active",
+        "dailyCalls": 67,
+        "monthlyLimit": 2000,
+        "responseTime": "234ms",
+        "uptime": 99.4
+      },
+      {
+        "name": "OpenAI API",
+        "status": "active",
+        "dailyCalls": 234,
+        "monthlyLimit": 10000,
+        "responseTime": "1234ms",
+        "uptime": 99.9
+      },
+      {
+        "name": "Calendar API",
+        "status": "active",
+        "dailyCalls": 89,
+        "monthlyLimit": 3000,
+        "responseTime": "78ms",
+        "uptime": 99.8
+      },
+      {
+        "name": "Maps API",
+        "status": "active",
+        "dailyCalls": 678,
+        "monthlyLimit": 25000,
+        "responseTime": "156ms",
+        "uptime": 99.9
+      }
+    ],
+  
+    "sampleAlerts": [
+      {
+        "id": 1,
+        "service": "uber",
+        "price": 24.50,
+        "targetPrice": 25.00,
+        "time": "10:25 AM",
+        "aiContext": "AI predicts this is the lowest price for the next 2 hours",
+        "confidence": 87,
+        "triggered": true
+      },
+      {
+        "id": 2,
+        "service": "bolt",
+        "price": 23.80,
+        "targetPrice": 24.00,
+        "time": "10:18 AM",
+        "aiContext": "Good deal detected! Prices typically 20% higher at this time",
+        "confidence": 92,
+        "triggered": true
+      }
+    ],
+  
+    "recommendations": [
+      {
+        "id": 1,
+        "type": "timing",
+        "title": "Optimal Departure Time",
+        "description": "Leave in 15 minutes for 20% savings",
+        "impact": "$6.50 savings",
+        "confidence": 87
+      },
+      {
+        "id": 2,
+        "type": "service",
+        "title": "Service Switch Recommendation",
+        "description": "Bolt is 15% cheaper with same ETA",
+        "impact": "$4.20 savings",
+        "confidence": 92
+      },
+      {
+        "id": 3,
+        "type": "route",
+        "title": "Route Optimization",
+        "description": "Alternative pickup location saves $3.50",
+        "impact": "$3.50 savings",
+        "confidence": 78
+      }
+    ]
+  }
