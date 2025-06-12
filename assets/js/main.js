@@ -1,17 +1,3 @@
-/**
- * Fare Tracker - Main Application Controller
- * Description: Core application logic and state management
- * Author: Your Name
- * Created: 2024
- *
- * This file handles:
- * - Application initialization
- * - State management
- * - Tab navigation
- * - Mobile menu functionality
- * - Event coordination between modules
- */
-
 "use strict";
 
 /**
@@ -26,8 +12,8 @@ class FareTrackerApp {
       isTracking: false,
       selectedService: "uber",
       alertPrice: 25,
-      fromLocation: "Downtown",
-      toLocation: "Airport",
+      fromLocation: "Newport",
+      toLocation: "Cardiff",
       currentFares: {
         uber: 28.5,
         bolt: 26.8,
@@ -258,17 +244,20 @@ class FareTrackerApp {
    */
   handleTabSwitch(tabName) {
     switch (tabName) {
-      case "dashboard":
+      case "dashboard": {
         this.refreshDashboard();
         break;
-      case "ai-chat":
+      }
+      case "ai-chat": {
         if (window.aiAssistant) {
           window.aiAssistant.focusInput();
         }
         break;
-      case "workflows":
+      }
+      case "workflows": {
         this.refreshWorkflowData();
         break;
+      }
     }
   }
 
@@ -287,7 +276,9 @@ class FareTrackerApp {
 
       // Close menu when clicking outside
       document.addEventListener("click", (e) => {
-        if (!mobileMenuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+        const isClickInsideMenu =
+          mobileMenuBtn.contains(e.target) || navMenu.contains(e.target);
+        if (!isClickInsideMenu) {
           this.closeMobileMenu();
         }
       });
@@ -316,7 +307,9 @@ class FareTrackerApp {
       // Manage focus
       if (isOpen) {
         const firstTab = navMenu.querySelector(".nav-tab");
-        if (firstTab) firstTab.focus();
+        if (firstTab) {
+          firstTab.focus();
+        }
       }
     }
   }
@@ -389,8 +382,12 @@ class FareTrackerApp {
     fareCards.forEach((card) => {
       const priceElement = card.querySelector(".fare-price");
       const changeElement = card.querySelector(".price-change");
-      if (priceElement) priceElement.setAttribute("aria-live", "polite");
-      if (changeElement) changeElement.setAttribute("aria-live", "polite");
+      if (priceElement) {
+        priceElement.setAttribute("aria-live", "polite");
+      }
+      if (changeElement) {
+        changeElement.setAttribute("aria-live", "polite");
+      }
     });
 
     // Alert status
@@ -411,23 +408,27 @@ class FareTrackerApp {
         let targetIndex;
         switch (e.key) {
           case "ArrowRight":
-          case "ArrowDown":
+          case "ArrowDown": {
             e.preventDefault();
             targetIndex = (index + 1) % navTabs.length;
             break;
+          }
           case "ArrowLeft":
-          case "ArrowUp":
+          case "ArrowUp": {
             e.preventDefault();
             targetIndex = (index - 1 + navTabs.length) % navTabs.length;
             break;
-          case "Home":
+          }
+          case "Home": {
             e.preventDefault();
             targetIndex = 0;
             break;
-          case "End":
+          }
+          case "End": {
             e.preventDefault();
             targetIndex = navTabs.length - 1;
             break;
+          }
         }
 
         if (targetIndex !== undefined) {
@@ -588,7 +589,7 @@ class FareTrackerApp {
 
     services.forEach((service) => {
       const currentPrice = this.state.currentFares[service];
-      const variation = (Math.random() - 0.5) * 4; // ±$2 variation
+      const variation = (Math.random() - 0.5) * 4; // ±£2 variation
       const minPrice = service === "taxi" ? 20 : 15;
 
       this.state.currentFares[service] = Math.max(
@@ -758,8 +759,12 @@ class FareTrackerApp {
     const fromInput = document.getElementById("from-location");
     const toInput = document.getElementById("to-location");
 
-    if (fromInput) fromInput.value = this.state.fromLocation;
-    if (toInput) toInput.value = this.state.toLocation;
+    if (fromInput) {
+      fromInput.value = this.state.fromLocation;
+    }
+    if (toInput) {
+      toInput.value = this.state.toLocation;
+    }
 
     this.updateRouteDisplay();
   }
@@ -787,13 +792,18 @@ class FareTrackerApp {
       demand: document.getElementById("demand-status"),
     };
 
-    if (indicators.weather)
+    if (indicators.weather) {
       indicators.weather.textContent = this.state.contextData.weather;
-    if (indicators.traffic)
+    }
+    if (indicators.traffic) {
       indicators.traffic.textContent = this.state.contextData.traffic;
-    if (indicators.event) indicators.event.textContent = "Concert";
-    if (indicators.demand)
+    }
+    if (indicators.event) {
+      indicators.event.textContent = "Concert";
+    }
+    if (indicators.demand) {
       indicators.demand.textContent = this.state.contextData.demand;
+    }
   }
 
   /**
@@ -828,14 +838,20 @@ class FareTrackerApp {
     const alertsList = document.getElementById("alerts-list");
     const noAlertsMessage = document.getElementById("no-alerts");
 
-    if (!alertsList) return;
-
-    if (this.state.alerts.length === 0) {
-      if (noAlertsMessage) noAlertsMessage.style.display = "block";
+    if (!alertsList) {
       return;
     }
 
-    if (noAlertsMessage) noAlertsMessage.style.display = "none";
+    if (this.state.alerts.length === 0) {
+      if (noAlertsMessage) {
+        noAlertsMessage.style.display = "block";
+      }
+      return;
+    }
+
+    if (noAlertsMessage) {
+      noAlertsMessage.style.display = "none";
+    }
 
     // Clear existing alerts except no-alerts message
     const existingAlerts = alertsList.querySelectorAll(".alert-item");
@@ -893,7 +909,7 @@ class FareTrackerApp {
         type: "timing",
         title: "Optimal Departure Time",
         description: "Leave in 15 minutes for 20% savings",
-        impact: "$6.50 savings",
+        impact: "£6.50 savings",
         confidence: 87,
       },
       {
@@ -901,7 +917,7 @@ class FareTrackerApp {
         type: "service",
         title: "Service Switch Recommendation",
         description: "Bolt is 15% cheaper with same ETA",
-        impact: "$4.20 savings",
+        impact: "£4.20 savings",
         confidence: 92,
       },
     ];
@@ -914,7 +930,9 @@ class FareTrackerApp {
    * Generate new recommendations based on current data
    */
   generateRecommendations() {
-    if (!this.state.isTracking) return;
+    if (!this.state.isTracking) {
+      return;
+    }
 
     const recommendations = [];
     const currentPrice = this.state.currentFares[this.state.selectedService];
@@ -928,7 +946,7 @@ class FareTrackerApp {
         type: "timing",
         title: "Wait for Better Price",
         description: `Wait ${waitTime} minutes for potential savings`,
-        impact: `$${savings}.00 potential savings`,
+        impact: `£${savings}.00 potential savings`,
         confidence: Math.floor(Math.random() * 20) + 75,
       });
     }
@@ -949,7 +967,7 @@ class FareTrackerApp {
           description: `${
             cheapestService.charAt(0).toUpperCase() + cheapestService.slice(1)
           } is cheaper right now`,
-          impact: `$${savings.toFixed(2)} savings`,
+          impact: `£${savings.toFixed(2)} savings`,
           confidence: Math.floor(Math.random() * 15) + 85,
         });
       }
@@ -968,7 +986,9 @@ class FareTrackerApp {
       "recommendations-section"
     );
 
-    if (!recommendationsList) return;
+    if (!recommendationsList) {
+      return;
+    }
 
     if (this.state.recommendations.length === 0) {
       if (recommendationsSection) {
@@ -1022,7 +1042,9 @@ class FareTrackerApp {
     const recommendation = this.state.recommendations.find(
       (rec) => rec.id === recId
     );
-    if (!recommendation) return;
+    if (!recommendation) {
+      return;
+    }
 
     // Simulate applying recommendation
     const messages = [
@@ -1069,7 +1091,9 @@ class FareTrackerApp {
    * Generate random AI insight
    */
   generateRandomInsight() {
-    if (!this.state.isTracking) return;
+    if (!this.state.isTracking) {
+      return;
+    }
 
     const insights = [
       {
@@ -1120,7 +1144,9 @@ class FareTrackerApp {
     const insightMessage = document.getElementById("insight-message");
     const insightPriority = document.getElementById("insight-priority");
 
-    if (insightMessage) insightMessage.textContent = message;
+    if (insightMessage) {
+      insightMessage.textContent = message;
+    }
     if (insightPriority) {
       insightPriority.textContent = priority.toUpperCase();
       insightPriority.className = `insight-priority priority-${priority}`;
@@ -1218,7 +1244,9 @@ class FareTrackerApp {
    */
   updateAPIIntegrations() {
     const apiGrid = document.querySelector(".api-grid");
-    if (!apiGrid) return;
+    if (!apiGrid) {
+      return;
+    }
 
     const apis = [
       { name: "Uber API", status: "active", calls: "1.2k" },
@@ -1264,18 +1292,21 @@ class FareTrackerApp {
     // Global keyboard shortcuts
     if (event.ctrlKey || event.metaKey) {
       switch (event.key) {
-        case "1":
+        case "1": {
           event.preventDefault();
           this.switchTab("dashboard");
           break;
-        case "2":
+        }
+        case "2": {
           event.preventDefault();
           this.switchTab("ai-chat");
           break;
-        case "3":
+        }
+        case "3": {
           event.preventDefault();
           this.switchTab("workflows");
           break;
+        }
       }
     }
 
@@ -1345,6 +1376,72 @@ class FareTrackerApp {
     if (window.aiAssistant) {
       window.aiAssistant.addMessage(`❌ Error: ${message}`, "system");
     }
+  }
+
+  /**
+   * Update best times display
+   */
+  updateBestTimesDisplay() {
+    if (!this.modules.fareTracker) {
+      return;
+    }
+
+    const bestTimesList = Utils.DOM.get("best-times-list");
+    if (!bestTimesList) {
+      return;
+    }
+
+    const bestTimes = this.modules.fareTracker.getBestTimes();
+
+    bestTimesList.innerHTML = bestTimes
+      .map(
+        (time, index) => `
+          <div class="best-time-item">
+              <div class="time-rank">
+                  <div class="rank-badge ${
+                    index === 0 ? "first" : index === 1 ? "second" : "third"
+                  }">
+                      ${index + 1}
+                  </div>
+                  <span class="time-label">${time.hour}</span>
+              </div>
+              <div class="time-info">
+                  <div class="time-price">${Utils.NumberUtils.formatPrice(
+                    time.avgPrice
+                  )}</div>
+                  <div class="time-meta">${time.demand}% demand • ${
+          time.efficiency
+        }% efficient</div>
+              </div>
+          </div>
+        `
+      )
+      .join("");
+  }
+
+  /**
+   * Initialize charts
+   */
+  async initializeCharts() {
+    const hasRequiredModules =
+      this.modules?.chartManager && this.modules?.fareTracker;
+    if (!hasRequiredModules) {
+      return;
+    }
+
+    // Price history chart (AI Predictions)
+    const priceHistoryChart = this.modules.chartManager.initPriceHistoryChart(
+      "price-history-chart",
+      this.modules.fareTracker.priceHistory
+    );
+
+    // Peak hours chart (AI Optimized Travel Times)
+    const peakHoursChart = this.modules.chartManager.initPeakHoursChart(
+      "peak-hours-chart",
+      this.modules.fareTracker.peakHoursData
+    );
+
+    Utils.Logger.info("Charts initialized");
   }
 
   /**
