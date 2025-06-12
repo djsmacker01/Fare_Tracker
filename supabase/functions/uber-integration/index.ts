@@ -27,7 +27,10 @@ const mockUberData = {
 }
 
 serve(async (req) => {
-  // Handle CORS preflight requests
+  // Log request details
+  console.log('Request method:', req.method)
+  console.log('Request headers:', Object.fromEntries(req.headers.entries()))
+
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
@@ -39,36 +42,73 @@ serve(async (req) => {
       Deno.env.get('ANON_KEY') ?? ''
     )
 
-    // Get request body with better error handling
-    let body;
-    try {
-      const text = await req.text();
-      console.log('Received request body:', text);
-      body = JSON.parse(text);
-      console.log('Parsed body:', body);
-    } catch (e) {
-      console.error('Error parsing request:', e);
+    // Get request body
+    const text = await req.text()
+    console.log('Raw request body:', text)
+
+    // Validate request body
+    if (!text || text.trim() === '') {
       return new Response(
-        JSON.stringify({ error: 'Invalid JSON in request body', details: e.message }),
+        JSON.stringify({
+          error: 'Empty request body',
+          details: 'The request body is empty or contains only whitespace'
+        }),
         {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
           status: 400,
         }
-      );
+      )
     }
 
-    const { pickup, dropoff } = body;
+    let body
+    try {
+      body = JSON.parse(text)
+    } catch (e) {
+      return new Response(
+        JSON.stringify({
+          error: 'Invalid JSON',
+          details: e.message,
+          receivedText: text
+        }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 400,
+        }
+      )
+    }
+
+    console.log('Parsed request body:', body)
 
     // Validate required fields
-    if (!pickup || !dropoff || !pickup.lat || !pickup.lng || !dropoff.lat || !dropoff.lng) {
+    if (!body.pickup || !body.dropoff) {
       return new Response(
-        JSON.stringify({ error: 'Missing required fields: pickup and dropoff locations' }),
+        JSON.stringify({
+          error: 'Missing required fields',
+          details: 'Request must include pickup and dropoff locations',
+          receivedBody: body
+        }),
         {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
           status: 400,
         }
-      );
+      )
     }
+
+    if (!body.pickup.lat || !body.pickup.lng || !body.dropoff.lat || !body.dropoff.lng) {
+      return new Response(
+        JSON.stringify({
+          error: 'Invalid location format',
+          details: 'Pickup and dropoff must include lat and lng coordinates',
+          receivedBody: body
+        }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 400,
+        }
+      )
+    }
+
+    const { pickup, dropoff } = body
 
     // Use mock data instead of real API call
     const uberData = mockUberData
@@ -87,7 +127,10 @@ serve(async (req) => {
       .select()
       .single()
 
-    if (fareError) throw fareError
+    if (fareError) {
+      console.error('Fare update error:', fareError)
+      throw fareError
+    }
 
     // Store driver location with some random variation
     const { data: driverLocation, error: driverError } = await supabaseClient
@@ -96,7 +139,7 @@ serve(async (req) => {
         service: 'uber',
         driver_id: uberData.prices[0].product_id,
         location: {
-          lat: pickup.lat + (Math.random() - 0.5) * 0.01, // Add small random variation
+          lat: pickup.lat + (Math.random() - 0.5) * 0.01,
           lng: pickup.lng + (Math.random() - 0.5) * 0.01
         },
         status: 'available',
@@ -105,14 +148,17 @@ serve(async (req) => {
       .select()
       .single()
 
-    if (driverError) throw driverError
+    if (driverError) {
+      console.error('Driver location error:', driverError)
+      throw driverError
+    }
 
     return new Response(
-      JSON.stringify({ 
-        success: true, 
+      JSON.stringify({
+        success: true,
         fareUpdate,
         driverLocation,
-        mockData: true // Indicate that we're using mock data
+        mockData: true
       }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -120,8 +166,13 @@ serve(async (req) => {
       }
     )
   } catch (error) {
+    console.error('Function error:', error)
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({
+        error: 'Function error',
+        details: error.message,
+        stack: error.stack
+      }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 400,
