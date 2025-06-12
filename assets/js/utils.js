@@ -112,9 +112,12 @@ const Utils = {
       const remainingSeconds = Math.floor(seconds % 60);
 
       const parts = [];
-      if (hours > 0) parts.push(`${hours} hour${hours !== 1 ? "s" : ""}`);
-      if (minutes > 0)
+      if (hours > 0) {
+        parts.push(`${hours} hour${hours !== 1 ? "s" : ""}`);
+      }
+      if (minutes > 0) {
         parts.push(`${minutes} minute${minutes !== 1 ? "s" : ""}`);
+      }
       if (remainingSeconds > 0 || parts.length === 0) {
         parts.push(
           `${remainingSeconds} second${remainingSeconds !== 1 ? "s" : ""}`
@@ -231,7 +234,9 @@ const Utils = {
    * @returns {boolean} True if valid email
    */
   validateEmail(email) {
-    if (typeof email !== "string") return false;
+    if (typeof email !== "string") {
+      return false;
+    }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email.trim());
@@ -427,9 +432,15 @@ const Utils = {
    * @returns {boolean} True if object is empty
    */
   isEmpty(obj) {
-    if (obj == null) return true;
-    if (Array.isArray(obj) || typeof obj === "string") return obj.length === 0;
-    if (typeof obj === "object") return Object.keys(obj).length === 0;
+    if (obj == null) {
+      return true;
+    }
+    if (Array.isArray(obj) || typeof obj === "string") {
+      return obj.length === 0;
+    }
+    if (typeof obj === "object") {
+      return Object.keys(obj).length === 0;
+    }
     return false;
   },
 
@@ -439,7 +450,9 @@ const Utils = {
    * @returns {string} Sanitized string
    */
   sanitizeHTML(str) {
-    if (typeof str !== "string") return "";
+    if (typeof str !== "string") {
+      return "";
+    }
 
     const map = {
       "&": "&amp;",
@@ -468,7 +481,9 @@ const Utils = {
    * @returns {string} Capitalized string
    */
   capitalize(str) {
-    if (typeof str !== "string" || str.length === 0) return "";
+    if (typeof str !== "string" || str.length === 0) {
+      return "";
+    }
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   },
 
@@ -478,7 +493,9 @@ const Utils = {
    * @returns {string} Title case string
    */
   toTitleCase(str) {
-    if (typeof str !== "string") return "";
+    if (typeof str !== "string") {
+      return "";
+    }
 
     return str
       .toLowerCase()
@@ -495,8 +512,12 @@ const Utils = {
    * @returns {string} Truncated string
    */
   truncate(str, length, suffix = "...") {
-    if (typeof str !== "string") return "";
-    if (str.length <= length) return str;
+    if (typeof str !== "string") {
+      return "";
+    }
+    if (str.length <= length) {
+      return str;
+    }
 
     return str.substring(0, length - suffix.length) + suffix;
   },
@@ -585,7 +606,7 @@ const Utils = {
    */
   addClass(element, className) {
     try {
-      if (element && element.classList && typeof className === "string") {
+      if (element?.classList && typeof className === "string") {
         element.classList.add(className);
       }
     } catch (error) {
@@ -600,7 +621,7 @@ const Utils = {
    */
   removeClass(element, className) {
     try {
-      if (element && element.classList && typeof className === "string") {
+      if (element?.classList && typeof className === "string") {
         element.classList.remove(className);
       }
     } catch (error) {
@@ -617,7 +638,7 @@ const Utils = {
    */
   toggleClass(element, className, force) {
     try {
-      if (element && element.classList && typeof className === "string") {
+      if (element?.classList && typeof className === "string") {
         return element.classList.toggle(className, force);
       }
       return false;
@@ -635,7 +656,7 @@ const Utils = {
    */
   hasClass(element, className) {
     try {
-      if (element && element.classList && typeof className === "string") {
+      if (element?.classList && typeof className === "string") {
         return element.classList.contains(className);
       }
       return false;
@@ -798,14 +819,17 @@ const Utils = {
     const logMessage = `[${timestamp}] ${message}`;
 
     switch (level) {
-      case "warn":
+      case "warn": {
         console.warn(logMessage);
         break;
-      case "error":
+      }
+      case "error": {
         console.error(logMessage);
         break;
-      default:
+      }
+      default: {
         console.log(logMessage);
+      }
     }
   },
 };
