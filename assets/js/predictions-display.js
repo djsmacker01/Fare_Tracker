@@ -57,8 +57,8 @@ function displayPrediction(prediction) {
       <span class="trend">${trendIcon}</span>
     </div>
     <div class="prediction-details">
-      <p>Current: $${prediction.current_price.toFixed(2)}</p>
-      <p>Predicted: $${prediction.predicted_price.toFixed(2)}</p>
+      <p>Current: £${prediction.current_price.toFixed(2)}</p>
+      <p>Predicted: £${prediction.predicted_price.toFixed(2)}</p>
       <p class="confidence ${confidenceColor}">
         Confidence: ${prediction.confidence}%
       </p>
