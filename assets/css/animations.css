@@ -1,0 +1,1044 @@
+/**
+ * Fare Tracker - Animations and Transitions
+ * Description: CSS animations, transitions, and visual effects
+ * Author: Your Name
+ * Created: 2024
+ * 
+ * This file contains:
+ * - Loading animations
+ * - Transition effects
+ * - Hover animations
+ * - Mobile-friendly animations
+ * - Accessibility-aware animations
+ * - Performance-optimized animations
+ */
+
+/* ===== LOADING ANIMATIONS ===== */
+
+/* Spinning loader */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pulsing effect */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* Breathing effect */
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+
+    0%,
+    20%,
+    53%,
+    80%,
+    100% {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: translate3d(0, 0, 0);
+    }
+
+    40%,
+    43% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -30px, 0);
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -15px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+/* Typing dots animation */
+@keyframes typingDots {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    30% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Slide in from top */
+@keyframes slideInTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Slide in from bottom */
+@keyframes slideInBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Fade in up */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade in down */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scale in */
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Zoom in */
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Wiggle animation */
+@keyframes wiggle {
+
+    0%,
+    7% {
+        transform: rotateZ(0);
+    }
+
+    15% {
+        transform: rotateZ(-15deg);
+    }
+
+    20% {
+        transform: rotateZ(10deg);
+    }
+
+    25% {
+        transform: rotateZ(-10deg);
+    }
+
+    30% {
+        transform: rotateZ(6deg);
+    }
+
+    35% {
+        transform: rotateZ(-4deg);
+    }
+
+    40%,
+    100% {
+        transform: rotateZ(0);
+    }
+}
+
+/* Float animation */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Glow effect */
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6);
+    }
+}
+
+/* Progress bar animation */
+@keyframes progressBar {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+
+    0%,
+    50%,
+    100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.1);
+    }
+
+    75% {
+        transform: scale(1.05);
+    }
+}
+
+/* ===== COMPONENT ANIMATIONS ===== */
+
+/* Loading overlay */
+.loading-overlay {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Tab content transitions */
+.tab-content {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.tab-content.active {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+/* Navigation animations */
+.nav-tab {
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.nav-tab:hover::before {
+    left: 100%;
+}
+
+.nav-tab.active {
+    animation: scaleIn 0.3s ease-out;
+}
+
+/* Mobile menu animations */
+.nav-menu {
+    transition: all var(--transition-normal);
+}
+
+.nav-menu.active {
+    animation: slideInTop 0.3s ease-out;
+}
+
+.mobile-menu-btn .hamburger-line {
+    transition: all var(--transition-normal);
+}
+
+/* AI Insights banner */
+.ai-insights-banner {
+    animation: slideInDown 0.6s ease-out;
+}
+
+.insight-priority {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Route setup animations */
+.route-setup {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.location-input {
+    transition: all var(--transition-normal);
+}
+
+.location-input:focus {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.context-item {
+    animation: fadeInUp 0.4s ease-out;
+    animation-fill-mode: both;
+}
+
+.context-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.context-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.context-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.context-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Fare cards animations */
+.fare-cards {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.fare-card {
+    transition: all var(--transition-normal);
+    animation: scaleIn 0.4s ease-out;
+    animation-fill-mode: both;
+}
+
+.fare-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.fare-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.fare-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.fare-card:hover {
+    animation: float 3s ease-in-out infinite;
+}
+
+.fare-card.selected {
+    animation: pulse 0.5s ease-out;
+}
+
+.fare-price {
+    transition: all var(--transition-fast);
+}
+
+.price-change {
+    animation: fadeInRight 0.3s ease-out;
+}
+
+.price-change.positive {
+    animation: wiggle 0.5s ease-in-out;
+}
+
+.price-change.negative {
+    animation: bounce 0.6s ease-out;
+}
+
+.ai-prediction {
+    animation: fadeInUp 0.4s ease-out;
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+}
+
+/* Tracking button */
+.tracking-btn {
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.tracking-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.tracking-btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+.tracking-btn.active {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* Recommendations animations */
+.recommendations-list {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.recommendation-item {
+    animation: slideInLeft 0.5s ease-out;
+    animation-fill-mode: both;
+    transition: all var(--transition-normal);
+}
+
+.recommendation-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.recommendation-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.recommendation-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.recommendation-item:hover {
+    animation: none;
+    /* Stop other animations on hover */
+    transform: translateY(-2px) scale(1.02);
+}
+
+.apply-btn {
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.apply-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.4s;
+}
+
+.apply-btn:hover::before {
+    left: 100%;
+}
+
+/* Chart animations */
+.chart-container {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.chart-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    animation: shimmer 2s ease-in-out infinite;
+    animation-delay: 1s;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.legend-item {
+    animation: fadeInUp 0.3s ease-out;
+    animation-fill-mode: both;
+}
+
+.legend-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.legend-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.legend-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.legend-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Best times animations */
+.best-times-list {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.best-time-item {
+    animation: slideInRight 0.4s ease-out;
+    animation-fill-mode: both;
+    transition: all var(--transition-normal);
+}
+
+.best-time-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.best-time-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.best-time-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.best-time-item:hover {
+    transform: scale(1.02);
+}
+
+.time-rank {
+    animation: zoomIn 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.time-rank.rank-1 {
+    animation: glow 2s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+/* Alert animations */
+.alerts-setup,
+.recent-alerts {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.alert-item {
+    animation: slideInLeft 0.4s ease-out;
+    animation-fill-mode: both;
+    transition: all var(--transition-normal);
+}
+
+.alert-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.alert-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.alert-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.alert-status.active {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.no-alerts-message {
+    animation: breathe 3s ease-in-out infinite;
+}
+
+/* Chat animations */
+.ai-chat-container {
+    animation: scaleIn 0.5s ease-out;
+}
+
+.chat-message {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.chat-message.user {
+    animation: slideInRight 0.3s ease-out;
+}
+
+.chat-message.ai {
+    animation: slideInLeft 0.3s ease-out;
+}
+
+.typing-indicator {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.typing-dots span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #6B7280;
+    margin: 0 2px;
+    animation: typingDots 1.4s ease-in-out infinite;
+}
+
+.typing-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.suggestion-btn {
+    transition: all var(--transition-normal);
+    animation: fadeInUp 0.3s ease-out;
+    animation-fill-mode: both;
+}
+
+.suggestion-btn:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.suggestion-btn:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.suggestion-btn:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.suggestion-btn:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.suggestion-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Workflow animations */
+.workflow-item {
+    animation: fadeInUp 0.4s ease-out;
+    animation-fill-mode: both;
+    transition: all var(--transition-normal);
+}
+
+.workflow-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.workflow-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.workflow-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.workflow-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.workflow-status-badge.running {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.metric-item {
+    animation: scaleIn 0.4s ease-out;
+    animation-fill-mode: both;
+    transition: all var(--transition-normal);
+}
+
+.metric-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.metric-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.metric-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.metric-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.metric-item:hover {
+    transform: scale(1.05);
+}
+
+.api-item {
+    animation: fadeInUp 0.3s ease-out;
+    animation-fill-mode: both;
+    transition: all var(--transition-normal);
+}
+
+.api-indicator.active {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Error state animations */
+.error-message {
+    animation: slideInLeft 0.3s ease-out;
+    color: var(--color-error);
+}
+
+.input-group.error .location-input,
+.input-group.error .price-input {
+    animation: wiggle 0.5s ease-in-out;
+}
+
+/* Success state animations */
+.success-message {
+    animation: slideInRight 0.3s ease-out;
+    color: var(--color-success);
+}
+
+/* Focus animations */
+.location-input:focus,
+.price-input:focus,
+.chat-input:focus {
+    transform: scale(1.02);
+}
+
+/* Hover effects */
+.fare-card:hover,
+.recommendation-item:hover,
+.best-time-item:hover,
+.alert-item:hover,
+.workflow-item:hover,
+.metric-item:hover {
+    box-shadow: var(--shadow-xl);
+}
+
+/* ===== RESPONSIVE ANIMATIONS ===== */
+
+/* Reduce animations on mobile for performance */
+@media (max-width: 767px) {
+    * {
+        animation-duration: 0.3s !important;
+    }
+
+    .fare-card:hover,
+    .recommendation-item:hover,
+    .best-time-item:hover {
+        animation: none;
+        transform: none;
+    }
+
+    .tracking-btn:hover,
+    .apply-btn:hover,
+    .suggestion-btn:hover {
+        transform: none;
+    }
+}
+
+/* ===== ACCESSIBILITY ANIMATIONS ===== */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .loading-spinner {
+        animation: none;
+    }
+
+    .typing-dots span {
+        animation: none;
+    }
+
+    .insight-priority,
+    .tracking-btn.active,
+    .alert-status.active,
+    .workflow-status-badge.running,
+    .api-indicator.active {
+        animation: none;
+    }
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+
+    .shimmer::before,
+    .nav-tab::before,
+    .apply-btn::before {
+        display: none;
+    }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* GPU acceleration for animations */
+.loading-spinner,
+.fare-card,
+.recommendation-item,
+.chart-wrapper,
+.typing-dots span {
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Transform-based animations for better performance */
+.slide-in-left {
+    transform: translateX(-100%);
+    animation: slideInLeft 0.4s ease-out forwards;
+}
+
+.slide-in-right {
+    transform: translateX(100%);
+    animation: slideInRight 0.4s ease-out forwards;
+}
+
+.fade-in-up {
+    transform: translateY(30px);
+    opacity: 0;
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.scale-in {
+    transform: scale(0.8);
+    opacity: 0;
+    animation: scaleIn 0.3s ease-out forwards;
+}
+
+/* ===== UTILITY ANIMATION CLASSES ===== */
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-bounce {
+    animation: bounce 1s infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.animate-wiggle {
+    animation: wiggle 0.5s ease-in-out;
+}
+
+.animate-heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 0.4s ease-out;
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft 0.4s ease-out;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.4s ease-out;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+}
+
+.animate-zoom-in {
+    animation: zoomIn 0.4s ease-out;
+}
+
+/* Delay utility classes */
+.delay-100 {
+    animation-delay: 0.1s;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.delay-300 {
+    animation-delay: 0.3s;
+}
+
+.delay-400 {
+    animation-delay: 0.4s;
+}
+
+.delay-500 {
+    animation-delay: 0.5s;
+}
+
+/* Duration utility classes */
+.duration-fast {
+    animation-duration: 0.2s;
+}
+
+.duration-normal {
+    animation-duration: 0.4s;
+}
+
+.duration-slow {
+    animation-duration: 0.6s;
+}
+
+/* Easing utility classes */
+.ease-linear {
+    animation-timing-function: linear;
+}
+
+.ease-in {
+    animation-timing-function: ease-in;
+}
+
+.ease-out {
+    animation-timing-function: ease-out;
+}
+
+.ease-in-out {
+    animation-timing-function: ease-in-out;
+}
