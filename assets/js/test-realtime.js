@@ -2,15 +2,20 @@
 const supabaseUrl = "https://bcemiehsozdgzspvwkjk.supabase.co";
 const supabaseKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjZW1pZWhzb3pkZ3pzcHZ3a2prIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjI1ODYsImV4cCI6MjA2NTI5ODU4Nn0.E6LTwwRwpQbeL37U2uXJ7ZxnQiaAe2FZwFLKhkBjUl8";
-const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 // Test real-time updates
 const testRealTimeUpdates = async () => {
   console.log("Testing real-time updates...");
 
   try {
+    // Wait for Supabase client to be initialized
+    while (!window.supabaseClient) {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+
     // Subscribe to fare updates
-    const fareSubscription = supabaseClient
+    const fareSubscription = window.supabaseClient
       .channel("test-fare-updates")
       .on(
         "postgres_changes",
@@ -26,7 +31,7 @@ const testRealTimeUpdates = async () => {
       .subscribe();
 
     // Subscribe to ride tracking
-    const rideSubscription = supabaseClient
+    const rideSubscription = window.supabaseClient
       .channel("test-ride-tracking")
       .on(
         "postgres_changes",
@@ -43,22 +48,40 @@ const testRealTimeUpdates = async () => {
 
     // Test fare update
     const testFareUpdate = async () => {
-      const { data, error } = await supabaseClient.from("fare_updates").insert({
-        service: "uber",
-        price: 29.99,
-        change_percentage: 1.5,
-      });
+      // Insert new fare update
+      const { error: insertError } = await window.supabaseClient
+        .from("fare_updates")
+        .insert({
+          service: "uber",
+          price: 29.99,
+          change_percentage: 1.5,
+        });
 
-      if (error) {
-        console.error("Error inserting fare update:", error);
+      if (insertError) {
+        console.error("Error inserting fare update:", insertError);
+        return;
+      }
+
+      // Fetch the latest fare update to verify
+      const { data: fareData, error: fetchError } = await window.supabaseClient
+        .from("fare_updates")
+        .select("*")
+        .eq("service", "uber")
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .single();
+
+      if (fetchError) {
+        console.error("Error fetching fare update:", fetchError);
       } else {
-        console.log("Test fare update inserted:", data);
+        console.log("Latest fare update:", fareData);
       }
     };
 
     // Test ride tracking update
     const testRideUpdate = async () => {
-      const { data, error } = await supabaseClient
+      // Insert new ride tracking
+      const { error: insertError } = await window.supabaseClient
         .from("ride_tracking")
         .insert({
           service: "uber",
@@ -67,10 +90,24 @@ const testRealTimeUpdates = async () => {
           eta: new Date(Date.now() + 15 * 60000), // 15 minutes from now
         });
 
-      if (error) {
-        console.error("Error inserting ride update:", error);
+      if (insertError) {
+        console.error("Error inserting ride update:", insertError);
+        return;
+      }
+
+      // Fetch the latest ride tracking to verify
+      const { data: rideData, error: fetchError } = await window.supabaseClient
+        .from("ride_tracking")
+        .select("*")
+        .eq("service", "uber")
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .single();
+
+      if (fetchError) {
+        console.error("Error fetching ride update:", fetchError);
       } else {
-        console.log("Test ride update inserted:", data);
+        console.log("Latest ride tracking:", rideData);
       }
     };
 
