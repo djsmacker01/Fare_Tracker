@@ -92,7 +92,7 @@ const updateFareDisplay = (fareData) => {
     const changeElement = fareCard.querySelector(".price-change");
 
     if (priceElement) {
-      priceElement.textContent = `$${price.toFixed(2)}`;
+      priceElement.textContent = `£${price.toFixed(2)}`;
     }
 
     if (changeElement) {
