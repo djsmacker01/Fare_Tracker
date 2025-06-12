@@ -28,21 +28,10 @@ const Utils = {
    * @returns {string} Formatted currency string
    */
   formatPrice(amount, currency = "USD", decimals = 2) {
-    try {
-      if (typeof amount !== "number" || isNaN(amount)) {
-        return "$0.00";
-      }
-
-      return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: currency,
-        minimumFractionDigits: decimals,
-        maximumFractionDigits: decimals,
-      }).format(amount);
-    } catch (error) {
-      console.warn("Error formatting price:", error);
-      return `$${amount.toFixed(decimals)}`;
+    if (!amount && amount !== 0) {
+      return "£0.00";
     }
+    return `£${amount.toFixed(decimals)}`;
   },
 
   /**
