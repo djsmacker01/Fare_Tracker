@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI-Powered Fare Tracker - Smart transportation monitoring with real-time price alerts and optimization recommendations">
+    <meta name="keywords" content="fare tracker, ride sharing, uber, lyft, price alerts, transportation, AI assistant">
+    <meta name="author" content="Your Name">
+
+    <title>Fare Tracker - Smart Transportation Cost Monitor</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- External CSS Files -->
+     <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+
+    <!-- External Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+    <!-- Header Navigation -->
+    <header class="header" role="banner">
+        <nav class="nav-container" role="navigation" aria-label="Main navigation">
+            <div class="nav-brand">
+                <h1 class="brand-title">
+                    <span class="brand-icon" aria-hidden="true">🚗</span>
+                    Fare Tracker
+                </h1>
+                <p class="brand-subtitle">AI-Powered Transportation Intelligence</p>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" aria-expanded="false" aria-controls="nav-menu"
+                aria-label="Toggle navigation menu">
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="nav-menu" role="menubar">
+                <li role="none">
+                    <button class="nav-tab active" data-tab="dashboard" role="menuitem" aria-selected="true">
+                        <span class="nav-icon" aria-hidden="true">📊</span>
+                        Dashboard
+                    </button>
+                </li>
+                <li role="none">
+                    <button class="nav-tab" data-tab="ai-chat" role="menuitem" aria-selected="false">
+                        <span class="nav-icon" aria-hidden="true">🤖</span>
+                        AI Assistant
+                    </button>
+                </li>
+                <li role="none">
+                    <button class="nav-tab" data-tab="workflows" role="menuitem" aria-selected="false">
+                        <span class="nav-icon" aria-hidden="true">⚙️</span>
+                        Workflows
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content" role="main">
+
+        <!-- AI Insights Banner -->
+        <section class="ai-insights-banner" id="ai-insights" aria-live="polite" aria-atomic="true">
+            <div class="insight-content">
+                <div class="insight-header">
+                    <span class="insight-icon" aria-hidden="true">🧠</span>
+                    <h2 class="insight-title">AI Insight</h2>
+                </div>
+                <p class="insight-message" id="insight-message">Analyzing current market conditions...</p>
+                <span class="insight-priority" id="insight-priority">MEDIUM</span>
+            </div>
+        </section>
+
+        <!-- Dashboard Tab Content -->
+        <div class="tab-content active" id="dashboard-content" role="tabpanel" aria-labelledby="dashboard-tab">
+
+            <!-- Route Setup Section -->
+            <section class="route-setup" aria-labelledby="route-setup-title">
+                <h2 id="route-setup-title" class="section-title">
+                    <span class="section-icon" aria-hidden="true">📍</span>
+                    Smart Route Planning
+                </h2>
+
+                <form class="route-form" id="route-form" novalidate>
+                    <div class="input-group">
+                        <label for="from-location" class="input-label">From</label>
+                        <input type="text" id="from-location" class="location-input" placeholder="Enter pickup location"
+                            required aria-describedby="from-error" autocomplete="street-address">
+                        <div class="error-message" id="from-error" aria-live="polite"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="to-location" class="input-label">To</label>
+                        <input type="text" id="to-location" class="location-input" placeholder="Enter destination"
+                            required aria-describedby="to-error" autocomplete="street-address">
+                        <div class="error-message" id="to-error" aria-live="polite"></div>
+                    </div>
+                </form>
+
+                <!-- Context Data Display -->
+                <div class="context-indicators" role="list" aria-label="Current conditions">
+                    <div class="context-item" role="listitem">
+                        <span class="context-icon" aria-hidden="true">☁️</span>
+                        <div class="context-text">
+                            <span class="context-value" id="weather-status">Clear</span>
+                            <span class="context-label">Weather</span>
+                        </div>
+                    </div>
+                    <div class="context-item" role="listitem">
+                        <span class="context-icon" aria-hidden="true">🚦</span>
+                        <div class="context-text">
+                            <span class="context-value" id="traffic-status">Moderate</span>
+                            <span class="context-label">Traffic</span>
+                        </div>
+                    </div>
+                    <div class="context-item" role="listitem">
+                        <span class="context-icon" aria-hidden="true">📅</span>
+                        <div class="context-text">
+                            <span class="context-value" id="event-status">Concert</span>
+                            <span class="context-label">Events</span>
+                        </div>
+                    </div>
+                    <div class="context-item" role="listitem">
+                        <span class="context-icon" aria-hidden="true">🎯</span>
+                        <div class="context-text">
+                            <span class="context-value" id="demand-status">High</span>
+                            <span class="context-label">Demand</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Current Fares Section -->
+            <section class="current-fares" aria-labelledby="current-fares-title">
+                <div class="section-header">
+                    <h2 id="current-fares-title" class="section-title">
+                        <span class="section-icon" aria-hidden="true">💰</span>
+                        AI-Enhanced Fare Tracking
+                    </h2>
+                    <button class="tracking-btn" id="tracking-btn" aria-pressed="false">
+                        <span class="btn-text">Start AI Tracking</span>
+                        <span class="btn-icon" aria-hidden="true">▶️</span>
+                    </button>
+                </div>
+
+                <div class="fare-cards" role="list" aria-label="Current fare options">
+                    <div class="fare-card" data-service="uber" role="listitem" tabindex="0" aria-label="Uber option"
+                        aria-describedby="uber-details">
+                        <div class="card-header">
+                            <div class="service-info">
+                                <span class="service-icon" aria-hidden="true">🚗</span>
+                                <span class="service-name">Uber</span>
+                            </div>
+                            <div class="price-change" id="uber-change" aria-live="polite">
+                                <span class="change-icon" aria-hidden="true">📈</span>
+                                <span class="change-text">+2.1%</span>
+                            </div>
+                        </div>
+                        <div class="fare-price" id="uber-price">$28.50</div>
+                        <div class="route-display" id="uber-details">Downtown → Airport</div>
+                        <div class="ai-prediction" id="uber-prediction" aria-live="polite">
+                            AI: Expected to rise
+                        </div>
+                    </div>
+
+                    <div class="fare-card" data-service="bolt" role="listitem" tabindex="0" aria-label="Bolt option"
+                        aria-describedby="bolt-details">
+                        <div class="card-header">
+                            <div class="service-info">
+                                <span class="service-icon" aria-hidden="true">⚡</span>
+                                <span class="service-name">Bolt</span>
+                            </div>
+                            <div class="price-change" id="bolt-change" aria-live="polite">
+                                <span class="change-icon" aria-hidden="true">📉</span>
+                                <span class="change-text">-1.5%</span>
+                            </div>
+                        </div>
+                        <div class="fare-price" id="bolt-price">$26.80</div>
+                        <div class="route-display" id="bolt-details">Downtown → Airport</div>
+                        <div class="ai-prediction" id="bolt-prediction" aria-live="polite">
+                            AI: May drop soon
+                        </div>
+                    </div>
+
+                    <div class="fare-card" data-service="taxi" role="listitem" tabindex="0" aria-label="Taxi option"
+                        aria-describedby="taxi-details">
+                        <div class="card-header">
+                            <div class="service-info">
+                                <span class="service-icon" aria-hidden="true">🚕</span>
+                                <span class="service-name">Taxi</span>
+                            </div>
+                            <div class="price-change" id="taxi-change" aria-live="polite">
+                                <span class="change-icon" aria-hidden="true">📈</span>
+                                <span class="change-text">+3.2%</span>
+                            </div>
+                        </div>
+                        <div class="fare-price" id="taxi-price">$32.00</div>
+                        <div class="route-display" id="taxi-details">Downtown → Airport</div>
+                        <div class="ai-prediction" id="taxi-prediction" aria-live="polite">
+                            AI: Expected to rise
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Recommendations Section -->
+            <section class="ai-recommendations" id="recommendations-section" aria-labelledby="recommendations-title">
+                <h2 id="recommendations-title" class="section-title">
+                    <span class="section-icon" aria-hidden="true">⚡</span>
+                    AI Recommendations
+                </h2>
+                <div class="recommendations-list" id="recommendations-list" role="list" aria-label="AI recommendations">
+                    <!-- Recommendations will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <div class="charts-grid">
+                <!-- Price History Chart -->
+                <section class="chart-container" aria-labelledby="price-chart-title">
+                    <h2 id="price-chart-title" class="section-title">AI Price Predictions</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="price-chart" aria-label="Price history and predictions chart" role="img"></canvas>
+                    </div>
+                    <div class="chart-legend" role="list" aria-label="Chart legend">
+                        <div class="legend-item" role="listitem">
+                            <span class="legend-color uber-color" aria-hidden="true"></span>
+                            <span class="legend-text">Uber</span>
+                        </div>
+                        <div class="legend-item" role="listitem">
+                            <span class="legend-color bolt-color" aria-hidden="true"></span>
+                            <span class="legend-text">Bolt</span>
+                        </div>
+                        <div class="legend-item" role="listitem">
+                            <span class="legend-color taxi-color" aria-hidden="true"></span>
+                            <span class="legend-text">Taxi</span>
+                        </div>
+                        <div class="legend-item" role="listitem">
+                            <span class="legend-color prediction-color" aria-hidden="true"></span>
+                            <span class="legend-text">AI Prediction</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Best Times Chart -->
+                <section class="chart-container" aria-labelledby="best-times-title">
+                    <h2 id="best-times-title" class="section-title">
+                        <span class="section-icon" aria-hidden="true">⏰</span>
+                        AI Optimized Travel Times
+                    </h2>
+                    <div class="best-times-list" id="best-times-list" role="list" aria-label="Best travel times">
+                        <!-- Best times will be populated by JavaScript -->
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="demand-chart" aria-label="Demand patterns throughout the day" role="img"></canvas>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Alerts Section -->
+            <div class="alerts-grid">
+                <!-- Alert Settings -->
+                <section class="alerts-setup" aria-labelledby="alerts-setup-title">
+                    <h2 id="alerts-setup-title" class="section-title">
+                        <span class="section-icon" aria-hidden="true">🔔</span>
+                        Smart Price Alerts
+                    </h2>
+
+                    <form class="alert-form" id="alert-form">
+                        <div class="alert-input-group">
+                            <label for="alert-price" class="input-label">
+                                Alert me when <span id="selected-service-name">Uber</span> price drops below:
+                            </label>
+                            <div class="price-input-container">
+                                <span class="currency-symbol">$</span>
+                                <input type="number" id="alert-price" class="price-input" min="10" max="100" step="0.50"
+                                    value="25" aria-describedby="current-price-info">
+                            </div>
+                            <div class="input-info" id="current-price-info">
+                                Current <span id="current-service-name">Uber</span> price:
+                                <span id="current-service-price">$28.50</span>
+                            </div>
+                        </div>
+
+                        <div class="alert-status" id="alert-status" aria-live="polite" aria-atomic="true">
+                            <span class="status-icon" aria-hidden="true">⏳</span>
+                            <span class="status-text">AI monitoring for optimal pricing...</span>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Recent Alerts -->
+                <section class="recent-alerts" aria-labelledby="recent-alerts-title">
+                    <h2 id="recent-alerts-title" class="section-title">AI-Enhanced Alerts</h2>
+                    <div class="alerts-list" id="alerts-list" role="list" aria-label="Recent price alerts">
+                        <div class="no-alerts-message" id="no-alerts">
+                            <span class="no-alerts-icon" aria-hidden="true">🔔</span>
+                            <p>No alerts yet. Start AI tracking to receive intelligent notifications!</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- AI Chat Tab Content -->
+        <div class="tab-content" id="ai-chat-content" role="tabpanel" aria-labelledby="ai-chat-tab">
+            <section class="ai-chat-container" aria-labelledby="ai-chat-title">
+                <div class="chat-header">
+                    <h2 id="ai-chat-title" class="section-title">
+                        <span class="section-icon" aria-hidden="true">🤖</span>
+                        AI Transportation Assistant
+                    </h2>
+                    <p class="chat-subtitle">Ask me about prices, routes, timing, or optimizations</p>
+                </div>
+
+                <div class="chat-messages" id="chat-messages" role="log" aria-live="polite"
+                    aria-label="Chat conversation">
+                    <!-- Messages will be populated by JavaScript -->
+                </div>
+
+                <form class="chat-input-form" id="chat-form">
+                    <div class="input-container">
+                        <label for="chat-input" class="visually-hidden">Ask AI assistant</label>
+                        <input type="text" id="chat-input" class="chat-input"
+                            placeholder="Ask me anything about your transportation..." autocomplete="off"
+                            maxlength="500">
+                        <button type="submit" class="send-btn" aria-label="Send message">
+                            <span class="send-icon" aria-hidden="true">📤</span>
+                        </button>
+                    </div>
+
+                    <div class="quick-suggestions" role="list" aria-label="Quick suggestion buttons">
+                        <button type="button" class="suggestion-btn" data-suggestion="Best time to travel?">
+                            Best time to travel?
+                        </button>
+                        <button type="button" class="suggestion-btn" data-suggestion="Save money?">
+                            Save money?
+                        </button>
+                        <button type="button" class="suggestion-btn" data-suggestion="Weather impact?">
+                            Weather impact?
+                        </button>
+                        <button type="button" class="suggestion-btn" data-suggestion="Booking help?">
+                            Booking help?
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <!-- Workflows Tab Content -->
+        <div class="tab-content" id="workflows-content" role="tabpanel" aria-labelledby="workflows-tab">
+
+            <!-- Workflow Status Section -->
+            <section class="workflow-status" aria-labelledby="workflow-status-title">
+                <h2 id="workflow-status-title" class="section-title">
+                    <span class="section-icon" aria-hidden="true">⚙️</span>
+                    n8n Workflow Status
+                </h2>
+
+                <div class="workflow-grid" role="list" aria-label="Workflow status list">
+                    <div class="workflow-item" role="listitem">
+                        <div class="workflow-header">
+                            <h3 class="workflow-name">Price Monitor</h3>
+                            <span class="workflow-status-badge running" aria-label="Status: Running">Running</span>
+                        </div>
+                        <p class="workflow-info">Last run: <time datetime="2024-01-15T10:58:00">2 min ago</time></p>
+                    </div>
+
+                    <div class="workflow-item" role="listitem">
+                        <div class="workflow-header">
+                            <h3 class="workflow-name">Weather Analyzer</h3>
+                            <span class="workflow-status-badge running" aria-label="Status: Running">Running</span>
+                        </div>
+                        <p class="workflow-info">Last run: <time datetime="2024-01-15T10:55:00">5 min ago</time></p>
+                    </div>
+
+                    <div class="workflow-item" role="listitem">
+                        <div class="workflow-header">
+                            <h3 class="workflow-name">Event Tracker</h3>
+                            <span class="workflow-status-badge running" aria-label="Status: Running">Running</span>
+                        </div>
+                        <p class="workflow-info">Last run: <time datetime="2024-01-15T09:00:00">1 hour ago</time></p>
+                    </div>
+
+                    <div class="workflow-item" role="listitem">
+                        <div class="workflow-header">
+                            <h3 class="workflow-name">AI Processor</h3>
+                            <span class="workflow-status-badge running" aria-label="Status: Running">Running</span>
+                        </div>
+                        <p class="workflow-info">Last run: <time datetime="2024-01-15T10:59:30">30 sec ago</time></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Performance Metrics -->
+            <section class="performance-metrics" aria-labelledby="performance-title">
+                <h2 id="performance-title" class="section-title">Workflow Performance</h2>
+
+                <div class="metrics-grid" role="list" aria-label="Performance metrics">
+                    <div class="metric-item" role="listitem">
+                        <div class="metric-label">Data Points Processed (24h)</div>
+                        <div class="metric-value">15,847</div>
+                    </div>
+
+                    <div class="metric-item" role="listitem">
+                        <div class="metric-label">AI Predictions Generated</div>
+                        <div class="metric-value">342</div>
+                    </div>
+
+                    <div class="metric-item" role="listitem">
+                        <div class="metric-label">User Savings Identified</div>
+                        <div class="metric-value">$2,847</div>
+                    </div>
+
+                    <div class="metric-item" role="listitem">
+                        <div class="metric-label">Alert Accuracy</div>
+                        <div class="metric-value">94.2%</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- API Integrations -->
+            <section class="api-integrations" aria-labelledby="api-integrations-title">
+                <h2 id="api-integrations-title" class="section-title">API Integrations</h2>
+
+                <div class="api-grid" role="list" aria-label="API integration status">
+                    <!-- API items will be populated by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <p class="footer-text">
+                🤖 Powered by AI Intelligence • ⚡ Automated with n8n • 📊 Real-time Data Processing
+            </p>
+            <p class="footer-credits">
+                Created for educational purposes |
+                <a href="https://github.com/username/fare-tracker" target="_blank" rel="noopener noreferrer">View on
+                    GitHub</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Loading Indicator -->
+    <div class="loading-overlay" id="loading-overlay" aria-hidden="true">
+        <div class="loading-spinner" aria-label="Loading content"></div>
+        <p class="loading-text">Initializing AI systems...</p>
+    </div>
+
+    <!-- External JavaScript Files (loaded at bottom for performance) -->
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/chart-config.js"></script>
+    <script src="assets/js/ai-assistant.js"></script>
+    <script src="assets/js/fare-tracker.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
