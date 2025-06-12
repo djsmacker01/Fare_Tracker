@@ -4,8 +4,8 @@ class FareTracker {
     this.trackingInterval = null;
     this.alertPrice = 25;
     this.selectedService = "uber";
-    this.fromLocation = "Downtown";
-    this.toLocation = "Airport";
+    this.fromLocation = "Newport";
+    this.toLocation = "Cardiff";
 
     // Current fare data
     this.currentFares = {
@@ -142,7 +142,9 @@ class FareTracker {
     if (savedData.alertPrice) {
       this.alertPrice = savedData.alertPrice;
       const alertInput = Utils.DOM.get("alert-price");
-      if (alertInput) alertInput.value = this.alertPrice;
+      if (alertInput) {
+        alertInput.value = this.alertPrice;
+      }
     }
 
     if (savedData.selectedService) {
@@ -152,13 +154,17 @@ class FareTracker {
     if (savedData.fromLocation) {
       this.fromLocation = savedData.fromLocation;
       const fromInput = Utils.DOM.get("from-location");
-      if (fromInput) fromInput.value = this.fromLocation;
+      if (fromInput) {
+        fromInput.value = this.fromLocation;
+      }
     }
 
     if (savedData.toLocation) {
       this.toLocation = savedData.toLocation;
       const toInput = Utils.DOM.get("to-location");
-      if (toInput) toInput.value = this.toLocation;
+      if (toInput) {
+        toInput.value = this.toLocation;
+      }
     }
 
     if (savedData.alerts) {
@@ -271,10 +277,7 @@ class FareTracker {
     this.checkPriceAlerts();
 
     // Update chart if it exists
-    if (
-      window.ChartManager &&
-      window.ChartManager.charts.has("price-history-chart")
-    ) {
+    if (window.ChartManager?.charts.has("price-history-chart")) {
       window.ChartManager.updateChart(
         "price-history-chart",
         [this.priceHistory[this.priceHistory.length - 1]],
@@ -364,7 +367,9 @@ class FareTracker {
    */
   updateFareCards(previousFares) {
     const fareCardsContainer = Utils.DOM.get("fare-cards");
-    if (!fareCardsContainer) return;
+    if (!fareCardsContainer) {
+      return;
+    }
 
     fareCardsContainer.innerHTML = "";
 
@@ -455,8 +460,12 @@ class FareTracker {
 
     const service = this.services.find((s) => s.id === serviceId);
     if (service) {
-      if (selectedServiceSpan) selectedServiceSpan.textContent = service.name;
-      if (currentServiceSpan) currentServiceSpan.textContent = service.name;
+      if (selectedServiceSpan) {
+        selectedServiceSpan.textContent = service.name;
+      }
+      if (currentServiceSpan) {
+        currentServiceSpan.textContent = service.name;
+      }
     }
 
     // Update fare cards
@@ -549,7 +558,9 @@ class FareTracker {
    */
   updateAlertsDisplay() {
     const alertsList = Utils.DOM.get("alerts-list");
-    if (!alertsList) return;
+    if (!alertsList) {
+      return;
+    }
 
     if (this.alerts.length === 0) {
       alertsList.innerHTML = `
@@ -607,7 +618,7 @@ class FareTracker {
         type: "timing",
         title: "Optimal Departure Time",
         description: "Leave in 15 minutes for 20% savings",
-        impact: "$6.50 savings",
+        impact: "£6.50 savings",
         confidence: 87,
       },
       {
@@ -615,7 +626,7 @@ class FareTracker {
         type: "service",
         title: "Service Switch Recommendation",
         description: "Bolt is 15% cheaper with same ETA",
-        impact: "$4.20 savings",
+        impact: "£4.20 savings",
         confidence: 92,
       },
     ];
@@ -631,7 +642,9 @@ class FareTracker {
     const recommendationsSection = Utils.DOM.get("ai-recommendations");
     const recommendationsList = Utils.DOM.get("recommendations-list");
 
-    if (!recommendationsList) return;
+    if (!recommendationsList) {
+      return;
+    }
 
     if (this.recommendations.length > 0) {
       Utils.DOM.show(recommendationsSection);
@@ -668,7 +681,9 @@ class FareTracker {
     const recommendation = this.recommendations.find(
       (r) => r.id === recommendationId
     );
-    if (!recommendation) return;
+    if (!recommendation) {
+      return;
+    }
 
     // Simulate applying the recommendation
     if (recommendation.type === "service") {
@@ -740,7 +755,9 @@ class FareTracker {
    * Update AI insight display
    */
   updateInsightDisplay() {
-    if (this.insights.length === 0) return;
+    if (this.insights.length === 0) {
+      return;
+    }
 
     const insightBanner = Utils.DOM.get("ai-insights-banner");
     const insightMessage = Utils.DOM.get("insight-message");
@@ -828,9 +845,15 @@ class FareTracker {
     const trafficData = Utils.DOM.get("traffic-data");
     const demandData = Utils.DOM.get("demand-data");
 
-    if (weatherData) weatherData.textContent = this.contextData.weather;
-    if (trafficData) trafficData.textContent = this.contextData.traffic;
-    if (demandData) demandData.textContent = this.contextData.demand;
+    if (weatherData) {
+      weatherData.textContent = this.contextData.weather;
+    }
+    if (trafficData) {
+      trafficData.textContent = this.contextData.traffic;
+    }
+    if (demandData) {
+      demandData.textContent = this.contextData.demand;
+    }
   }
 
   /**
