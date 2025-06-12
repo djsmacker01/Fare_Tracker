@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Uber Integration Function</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .result {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #result {
+            white-space: pre-wrap;
+            font-family: monospace;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Test Uber Integration Function</h1>
+    <button onclick="testFunction()">Test Function</button>
+    <div id="result">Results will appear here...</div>
+
+    <script>
+        async function testFunction() {
+            const result = document.getElementById('result');
+            result.textContent = 'Testing...';
+
+            const SUPABASE_URL = 'https://bcemiehsozdgzspvwkjk.supabase.co/functions/v1/uber-integration';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjZW1pZWhzb3pkZ3pzcHZ3a2prIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjI1ODYsImV4cCI6MjA2NTI5ODU4Nn0.E6LTwwRwpQbeL37U2uXJ7ZxnQiaAe2FZwFLKhkBjUl8';
+
+            // Test data
+            const testData = {
+                pickup: {
+                    lat: 40.7128,
+                    lng: -74.006
+                },
+                dropoff: {
+                    lat: 40.7589,
+                    lng: -73.9851
+                }
+            };
+
+            try {
+                // Create a clean JSON string
+                const jsonString = JSON.stringify(testData);
+
+                // Log the exact string being sent
+                console.log('Request data (string):', jsonString);
+                console.log('Request data (parsed):', JSON.parse(jsonString));
+
+                const response = await fetch(SUPABASE_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    },
+                    body: jsonString
+                });
+
+                // Get the raw response text
+                const rawResponse = await response.text();
+                console.log('Raw response:', rawResponse);
+
+                // Try to parse the response as JSON
+                let data;
+                try {
+                    data = JSON.parse(rawResponse);
+                } catch (e) {
+                    result.textContent = `Error parsing response: ${e.message}\nRaw response: ${rawResponse}`;
+                    return;
+                }
+
+                // Display the result
+                if (!response.ok) {
+                    result.textContent = `Error (${response.status}): ${JSON.stringify(data, null, 2)}`;
+                } else {
+                    result.textContent = `Success: ${JSON.stringify(data, null, 2)}`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                result.textContent = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+
+</html>
