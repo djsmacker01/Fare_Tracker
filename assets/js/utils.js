@@ -385,7 +385,7 @@ const Utils = {
    */
   randomBetween(min, max, integer = false) {
     const random = Math.random() * (max - min) + min;
-    // return integer ? Math.floor(random) : random;
+    return integer ? Math.floor(random) : random;
   },
 
   /**
