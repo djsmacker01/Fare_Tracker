@@ -1,6 +1,7 @@
 # Fare Tracker - Transportation Price Monitor
 
 **Fare Tracker** is a responsive front-end web application that empowers users to monitor and optimize their transportation costs across multiple ride-sharing and taxi services. With features like real-time fare tracking, price alerts, and intelligent travel insights, the platform helps commuters make smarter travel decisions.
+Fare Tracker site is currently live, the link can be found <a href="https://faretracker.netlify.app/" target="_blank" rel="noopener noreferrer">Here</a>
 
 ---
 
