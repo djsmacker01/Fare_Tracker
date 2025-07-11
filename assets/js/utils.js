@@ -157,12 +157,7 @@ const Utils = {
     }
   },
 
-  /**
-   * Format time for display
-   * @param {Date|string|number} date - Date to format
-   * @param {Object} options - Formatting options
-   * @returns {string} Formatted time string
-   */
+
   formatTime(date, options = {}) {
     try {
       const targetDate = new Date(date);
