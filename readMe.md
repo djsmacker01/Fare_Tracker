@@ -6,11 +6,389 @@
 
 ## 🚀 Features
 
+- 🤖 **AI-Powered Price Prediction** using n8n intelligent agents
 - 🔍 **Real-time Fare Estimates** for Uber, Bolt, and traditional taxis  
-- 🔔 **Custom Price Alerts** when fares drop below your chosen threshold  
-- 📈 **Historical Fare Trends** to spot patterns and peak hours  
-- 🧠 **Smart Travel Recommendations** based on fare data  
-- 📊 **Peak Demand Analysis** to help avoid surge pricing  
+- 🔔 **Smart Price Alerts** with AI-driven threshold optimization
+- 📈 **Historical Fare Trends** with machine learning pattern recognition
+- 🧠 **Predictive Travel Recommendations** based on AI analysis
+- 📊 **AI Peak Demand Forecasting** to avoid surge pricing
+- ⚡ **Intelligent Booking Windows** - AI tells you exactly when to book  
+
+---
+
+## 👥 User Experience & Research
+
+### 🎭 User Personas
+
+#### Primary Persona: Emma - The Daily Commuter
+**Demographics:**
+- Age: 28, Marketing Manager
+- Location: Cardiff suburbs → Central Cardiff
+- Income: £35,000/year
+- Tech Comfort: High
+
+**Goals & Motivations:**
+- Save £50-80/month on transportation costs
+- Avoid surge pricing during peak hours
+- Maintain consistent commute schedule
+- Track transportation budget
+
+**Pain Points:**
+- Unpredictable surge pricing catches her off-guard
+- No easy way to compare prices across services
+- Often pays more during rush hour
+- Difficulty planning monthly transport budget
+
+**Behavior Patterns:**
+- Checks prices 2-3 times daily
+- Commutes Mon-Fri, 8:30 AM & 6:00 PM
+- Uses smartphone 90% of the time
+- Values time efficiency over small savings
+
+**User Quote:** *"I just want to know when it's cheaper to take an Uber versus waiting 10 minutes for the surge to drop."*
+
+---
+
+#### Secondary Persona: Marcus - The Budget Traveler
+**Demographics:**
+- Age: 22, University Student
+- Location: Various locations around Cardiff
+- Income: £12,000/year (part-time + student loan)
+- Tech Comfort: High
+
+**Goals & Motivations:**
+- Minimize transportation costs
+- Find the cheapest option available
+- Plan trips around price dips
+- Share cost-saving tips with friends
+
+**Pain Points:**
+- Limited budget for transportation
+- Doesn't know optimal travel times
+- Missing price drops due to lack of alerts
+- Uncertainty about fare fluctuations
+
+**Behavior Patterns:**
+- Price-sensitive, will wait for better deals
+- Travels irregularly, mostly evenings/weekends
+- Heavy mobile user, social media active
+- Shares deals and tips with peer network
+
+**User Quote:** *"If I could save even £2-3 per trip by knowing when prices drop, that would make a huge difference to my budget."*
+
+---
+
+#### Tertiary Persona: David - The Business Traveler
+**Demographics:**
+- Age: 42, Senior Consultant
+- Location: Travels between Cardiff, Bristol, London
+- Income: £65,000/year
+- Tech Comfort: Medium-High
+
+**Goals & Motivations:**
+- Optimize business travel expenses
+- Reliable transportation for client meetings
+- Track expenses for reimbursement
+- Minimize travel disruptions
+
+**Pain Points:**
+- Company wants cost optimization but needs reliability
+- Difficulty predicting and budgeting travel costs
+- Time-sensitive meetings can't wait for price drops
+- Expense reporting requires detailed tracking
+
+**Behavior Patterns:**
+- Books transportation day-of or previous evening
+- Values reliability over lowest price
+- Uses desktop for planning, mobile for booking
+- Needs detailed pricing history for expense reports
+
+**User Quote:** *"I need to balance cost savings with reliability - missing a client meeting isn't worth saving £10."*
+
+---
+
+### 🎯 User Goals
+
+#### Functional Goals
+- **Price Optimization:** Compare real-time prices across multiple services
+- **Budget Management:** Track and predict monthly transportation expenses
+- **Time Efficiency:** Find optimal travel times to avoid surge pricing
+- **Cost Alerts:** Receive notifications when prices drop below thresholds
+- **Historical Analysis:** Understand pricing patterns for better planning
+
+#### Emotional Goals
+- **Financial Control:** Feel confident about transportation spending
+- **Smart Decision Making:** Make informed choices based on data
+- **Stress Reduction:** Eliminate price uncertainty and surprise charges
+- **Empowerment:** Take control of transportation costs
+- **Satisfaction:** Achieve measurable savings through app usage
+
+#### Social Goals
+- **Sharing Insights:** Share money-saving tips with friends/colleagues
+- **Social Proof:** Demonstrate smart financial planning
+- **Community Value:** Contribute to collective transportation knowledge
+
+---
+
+### 💼 Business Goals
+
+#### User Acquisition Goals
+- **Target:** Acquire 10,000 active users in first 6 months
+- **Strategy:** SEO optimization for "Cardiff transportation costs"
+- **Channels:** Social media marketing, university partnerships
+- **Metrics:** Monthly active users, user registration rate, app downloads
+- **Value Proposition:** Save £300+ annually on transportation costs
+
+#### User Engagement Goals
+- **Target:** 70% weekly active user rate among registered users
+- **Strategy:** Push notifications for price alerts, gamification elements
+- **Features:** Streak tracking, savings leaderboards, achievement badges
+- **Metrics:** Session frequency, time spent in app, feature adoption rate
+- **Retention:** Implement email campaigns for dormant users
+
+#### Monetization Goals
+- **Phase 1 (Months 1-6):** Focus on user growth and engagement
+- **Phase 2 (Months 7-12):** Introduce premium features
+  - Advanced analytics and reporting
+  - Extended price history (beyond 30 days)
+  - Multiple route tracking
+  - SMS/Email alert upgrades
+- **Phase 3 (Year 2+):** Partnership revenue
+  - Affiliate commissions from ride services
+  - Promoted placement for taxi companies
+  - Corporate accounts for business travelers
+- **Revenue Target:** £5,000 MRR by end of Year 1
+
+---
+
+### 📖 Complete User Stories
+
+#### Epic 1: Route Setup & Management
+```
+As a daily commuter (Emma),
+I want to quickly set up my regular route,
+So that I can immediately start tracking fares without repetitive data entry.
+
+Acceptance Criteria:
+- Input pickup and destination addresses with auto-complete
+- Save favorite routes for quick access
+- Edit or delete saved routes
+- Route validation with error messaging
+- Location suggestions based on previous entries
+```
+
+```
+As a budget traveler (Marcus),
+I want to set up multiple routes for different occasions,
+So that I can track prices for various trips I take regularly.
+
+Acceptance Criteria:
+- Create and name multiple route profiles
+- Switch between routes with one click
+- See route distance and estimated travel time
+- Copy routes to create similar variations
+- Set different alert preferences per route
+```
+
+#### Epic 2: Real-Time Fare Tracking
+```
+As a daily commuter (Emma),
+I want to see live fare updates from all services,
+So that I can choose the most cost-effective option at any moment.
+
+Acceptance Criteria:
+- Display current prices for Uber, Bolt, and Taxi
+- Update prices every 3-5 seconds when tracking is active
+- Show price change indicators (up/down arrows with percentages)
+- Highlight the cheapest current option
+- Option to pause/resume tracking to save battery
+```
+
+```
+As a business traveler (David),
+I want reliable fare information with service quality indicators,
+So that I can balance cost with reliability for important meetings.
+
+Acceptance Criteria:
+- Display estimated arrival times alongside prices
+- Show service availability status
+- Include surge pricing indicators
+- Provide reliability scores based on historical data
+- Option to prioritize reliability over price
+```
+
+#### Epic 3: Price Alert System
+```
+As a budget traveler (Marcus),
+I want to set price alerts for my preferred services,
+So that I can catch price drops and save money on my trips.
+
+Acceptance Criteria:
+- Set custom price thresholds for each service
+- Receive instant browser notifications when prices drop
+- See alert history with timestamps
+- Snooze alerts for specified time periods
+- Set different alert levels (immediately, 10%, 20% drops)
+```
+
+```
+As a daily commuter (Emma),
+I want smart alerts that consider my schedule,
+So that I only get notified when price drops are relevant to my travel times.
+
+Acceptance Criteria:
+- Set active alert hours (e.g., 7-9 AM, 5-7 PM)
+- Weekend/weekday different alert preferences
+- Integration with calendar (future enhancement)
+- Alert intensity settings (urgent, normal, low priority)
+- Option for SMS alerts for critical price drops
+```
+
+#### Epic 4: Historical Analysis & Insights
+```
+As a business traveler (David),
+I want to see historical pricing patterns,
+So that I can plan my travel schedule around cost-effective times.
+
+Acceptance Criteria:
+- View price trends for the last 7 days
+- Compare pricing patterns across different days of the week
+- See peak and off-peak hours clearly marked
+- Export pricing data for expense reporting
+- Monthly and weekly price summaries
+```
+
+```
+As a daily commuter (Emma),
+I want personalized insights about my travel patterns,
+So that I can optimize my commute timing and save money.
+
+Acceptance Criteria:
+- Daily savings summary with potential optimizations
+- Recommended travel times based on my route
+- Weekly/monthly savings tracking
+- Comparison with previous months' spending
+- Projected annual savings based on current patterns
+```
+
+#### Epic 5: Travel Recommendations
+```
+As a budget traveler (Marcus),
+I want smart recommendations for the best travel times,
+So that I can plan my trips around the cheapest fares.
+
+Acceptance Criteria:
+- Rank best travel times by price for next 24 hours
+- Show demand levels and surge probability
+- Suggest alternative time slots within acceptable ranges
+- Factor in day of week and special events
+- Provide reasoning for each recommendation
+```
+
+```
+As a daily commuter (Emma),
+I want recommendations that balance cost and convenience,
+So that I can save money without significantly disrupting my schedule.
+
+Acceptance Criteria:
+- Recommendations within 30-minute windows of preferred times
+- Balance price savings with time convenience
+- Consider weather impact on demand
+- Factor in special events affecting transportation
+- Provide "what if" scenarios for different departure times
+```
+
+#### Epic 7: AI-Powered Predictions & Insights
+```
+As a daily commuter (Emma),
+I want AI to predict when prices will drop during my travel window,
+So that I can plan my departure time to get the best fare.
+
+Acceptance Criteria:
+- Display AI predictions like "Prices likely to drop 15% in 12 minutes"
+- Show confidence levels for each prediction (High, Medium, Low)
+- Provide optimal booking windows with time countdowns
+- Learn from my travel patterns to personalize predictions
+- Alert me when AI detects an unusual price pattern
+```
+
+```
+As a budget traveler (Marcus),
+I want the AI to analyze historical patterns and predict the cheapest time to travel,
+So that I can maximize my savings by timing my bookings perfectly.
+
+Acceptance Criteria:
+- AI analyzes historical data to predict optimal travel times
+- Provide weekly price prediction reports
+- Send proactive suggestions like "Book now - prices rising in 5 min"
+- Show AI confidence scores for all predictions
+- Learn from successful bookings to improve recommendations
+```
+
+```
+As a business traveler (David),
+I want AI to predict price stability for reliable trip planning,
+So that I can book with confidence while still optimizing costs.
+
+Acceptance Criteria:
+- AI predicts price volatility and stability windows
+- Provide "safe booking" recommendations with low surge risk
+- Alert when AI detects potential service disruptions
+- Generate predictive expense reports with AI insights
+- Balance reliability predictions with cost optimization
+```
+
+#### Epic 8: Smart AI Alert System
+```
+As any user,
+I want the AI to automatically optimize my alert thresholds based on market patterns,
+So that I get timely notifications without alert fatigue.
+
+Acceptance Criteria:
+- AI automatically adjusts alert thresholds based on price patterns
+- Smart alert timing to avoid notification spam
+- Different alert urgency levels based on AI confidence
+- Predictive alerts before prices are expected to rise
+- AI learns from my response patterns to optimize alert relevance
+```
+
+```
+As a daily commuter (Emma),
+I want AI to predict and alert me about surge pricing before it happens,
+So that I can avoid peak charges by adjusting my departure time.
+
+Acceptance Criteria:
+- AI predicts surge pricing 15-30 minutes in advance
+- Provide alternative time suggestions to avoid surge
+- Smart snooze options based on predicted price recovery
+- Integration with calendar for intelligent timing
+- Personalized surge prediction based on my route patterns
+```
+```
+As a new user,
+I want a clear introduction to the app's features,
+So that I can quickly understand how to save money on transportation.
+
+Acceptance Criteria:
+- Interactive tutorial highlighting key features
+- Progressive disclosure of advanced features
+- Clear explanation of how price tracking works
+- Examples of potential savings
+- Easy setup process for first route and alert
+```
+
+```
+As a returning user,
+I want to see the value I'm getting from the app,
+So that I stay motivated to continue using it for savings.
+
+Acceptance Criteria:
+- Dashboard showing total savings achieved
+- Comparison with what I would have spent without the app
+- Badges or achievements for savings milestones
+- Monthly savings reports
+- Success stories and tips from other users
+```
 
 ---
 
@@ -55,9 +433,12 @@
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript  
-- **APIs:** Uber API, Google Maps API *(or alternatives)*  
-- **Alerting System:** In-browser notifications / Webhooks *(optional)*
+- **Frontend:** HTML, CSS, JavaScript (React 18)
+- **AI Engine:** n8n Workflow Automation with AI Agents
+- **Data Processing:** Historical data analysis and pattern recognition
+- **Communication:** Webhooks between frontend and n8n workflows
+- **Prediction Models:** Price forecasting and demand analysis algorithms
+- **Alerting System:** AI-optimized notifications with smart thresholds
 
 ---
 
@@ -168,102 +549,200 @@
 
 ## 🔧 Technical Documentation
 
-### 1. Real-Time Fare Monitoring
+### 1. AI-Powered Real-Time Fare Monitoring
 **Functionality:**
-- Simulates live price updates every 3 seconds when tracking is enabled
-- Tracks fare fluctuations for Uber, Bolt, and Taxi services
-- Displays percentage changes with visual trend indicators
+- n8n AI agent analyzes historical patterns and generates realistic price simulations
+- Machine learning models predict fare fluctuations based on time, demand, and historical data
+- AI triggers webhook notifications to frontend when significant price changes occur
 
 **Technical Implementation:**
-- Uses React useEffect hook with setInterval for periodic updates
-- Applies random price variations within realistic ranges
-- Maintains price boundaries (minimum thresholds) for each service
+- n8n workflows with price prediction algorithms
+- Webhook endpoints receive AI-generated price updates and predictions
+- React useEffect hooks process webhook data and update UI state
+- AI confidence scores displayed alongside predictions
 
-**User Interaction:**
-- Toggle tracking with "Start/Stop Tracking" button
-- Real-time visual feedback with price change animations
-- Service selection affects alert monitoring focus
+**AI Agent Workflows:**
+- **Price Generation Workflow:** Simulates realistic fare data with trend analysis
+- **Prediction Workflow:** Forecasts price movements for next 30-60 minutes
+- **Alert Optimization Workflow:** Dynamically adjusts alert thresholds based on patterns
 
-### 2. Smart Price Alert System
+### 2. Intelligent Price Alert System
 **Functionality:**
-- Users set custom price thresholds for their preferred service
-- Automatic notifications when fares drop below target price
-- Alert history with timestamps for reference
+- AI analyzes user behavior and market patterns to optimize alert timing
+- Smart threshold adjustment based on price volatility and user response patterns
+- Predictive alerts warn users before prices are expected to rise
 
 **Technical Implementation:**
-- Continuous price monitoring using useEffect dependency on current fares
-- Alert generation with unique IDs and timestamps
-- Alert queue management (displays last 5 alerts)
+- n8n AI workflows monitor price thresholds and trigger webhook alerts
+- Machine learning models analyze historical alert effectiveness
+- Frontend receives AI-optimized alerts with confidence scores and reasoning
 
-### 3. Historical Price Analysis
+**AI Alert Features:**
+- **Threshold Optimization:** AI adjusts alert levels based on market analysis
+- **Predictive Alerts:** "Price likely to rise in 10 minutes" notifications
+- **Smart Snoozing:** AI suggests optimal snooze durations based on predictions
+
+### 3. Historical Price Analysis with Machine Learning
 **Functionality:**
-- Displays price trends throughout the day
-- Multi-service comparison on single chart
-- Interactive tooltips with detailed price information
+- AI agent stores and analyzes historical pricing data for pattern recognition
+- Machine learning algorithms identify peak hours, seasonal trends, and anomalies
+- Predictive models forecast optimal travel times based on historical patterns
 
 **Technical Implementation:**
-- Uses Recharts library for responsive line charts
-- Mock historical data with realistic peak/off-peak patterns
-- Dynamic legend and color coding for each service
+- n8n workflows collect and store simulated historical data
+- AI algorithms process data to identify patterns and trends
+- Webhook communication sends AI insights to frontend visualization components
 
-### 4. Travel Time Optimization
+**AI Analytics Features:**
+- **Pattern Recognition:** Identifies recurring price patterns and seasonal trends
+- **Anomaly Detection:** Flags unusual price movements for user awareness
+- **Predictive Modeling:** Forecasts optimal booking windows based on historical data
+
+### 4. AI-Powered Travel Time Optimization
 **Functionality:**
-- Analyzes demand patterns and average prices by hour
-- Provides top 3 recommended travel times
-- Displays demand visualization with bar charts
+- Machine learning models analyze demand patterns and predict optimal travel times
+- AI generates personalized recommendations based on user travel history
+- Predictive algorithms forecast surge pricing and suggest alternative timing
 
 **Technical Implementation:**
-- Pre-calculated peak hours data with demand percentages
-- Sorting algorithm to identify lowest-price time slots
-- Integrated bar chart showing demand patterns
+- n8n AI workflows analyze simulated demand data and generate recommendations
+- Webhook endpoints deliver AI-powered insights to frontend components
+- React components display AI recommendations with confidence levels and reasoning
 
-### 5. Route Management
+**AI Recommendation Engine:**
+- **Demand Prediction:** AI forecasts demand levels for different time slots
+- **Personalization:** Machine learning adapts recommendations to user preferences
+- **Dynamic Optimization:** Real-time adjustment of recommendations based on current conditions
+
+### 5. Webhook Architecture & Real-Time Communication
 **Functionality:**
-- Customizable pickup and destination locations
-- Route information display across all price calculations
-- Location-based fare estimation context
+- Bidirectional communication between React frontend and n8n AI workflows
+- Real-time price updates, predictions, and alerts delivered via webhooks
+- AI agent workflows triggered by user actions and price threshold events
 
 **Technical Implementation:**
-- Controlled input components with React state management
-- Dynamic route display in fare cards and headers
-- Location context used in price calculation displays
+```javascript
+// Frontend webhook listener
+useEffect(() => {
+  const webhook = new EventSource('/api/n8n-webhooks/price-updates');
+  
+  webhook.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    
+    switch(data.type) {
+      case 'PRICE_UPDATE':
+        updateCurrentPrices(data.prices);
+        break;
+      case 'AI_PREDICTION':
+        displayPrediction(data.prediction, data.confidence);
+        break;
+      case 'SMART_ALERT':
+        triggerAlert(data.alert, data.reasoning);
+        break;
+    }
+  };
+}, []);
 
-### 6. Responsive Design System
+// Trigger n8n workflow from frontend
+const triggerAIAnalysis = async (routeData) => {
+  await fetch('/api/n8n-webhooks/analyze-route', {
+    method: 'POST',
+    body: JSON.stringify({
+      route: routeData,
+      userId: user.id,
+      timestamp: Date.now()
+    })
+  });
+};
+```
+
+**n8n Workflow Structure:**
+- **Price Simulation Workflow:** Generates realistic fare data every 30 seconds
+- **Prediction Workflow:** Analyzes patterns and creates 15-60 minute forecasts
+- **Alert Workflow:** Monitors thresholds and sends intelligent notifications
+- **Learning Workflow:** Continuously improves predictions based on user interactions
+
+### 6. AI Data Storage & Learning System
 **Functionality:**
-- Mobile-first responsive design
-- Adaptive grid layouts for different screen sizes
-- Touch-friendly interface elements
+- Historical data storage for machine learning model training
+- User interaction tracking to improve AI predictions and recommendations
+- Continuous learning algorithms that adapt to market changes and user behavior
 
 **Technical Implementation:**
-- Tailwind CSS utility classes for responsive breakpoints
-- CSS Grid and Flexbox for flexible layouts
-- Optimized component sizing for mobile and desktop
+- n8n workflows store simulated pricing data in structured format
+- AI models analyze user response patterns to improve alert accuracy
+- Machine learning algorithms continuously refine prediction models
+
+**Data Flow Architecture:**
+```
+┌─────────────┐    Webhooks    ┌─────────────┐    Analysis    ┌─────────────┐
+│   React     │◄──────────────►│     n8n     │◄──────────────►│ AI Models   │
+│  Frontend   │                │  Workflows  │                │ & Data      │
+└─────────────┘                └─────────────┘                └─────────────┘
+      │                              │                              │
+      │ User Actions                 │ Trigger Events               │ Learning
+      ▼                              ▼                              ▼
+┌─────────────┐                ┌─────────────┐                ┌─────────────┐
+│ User Input  │                │ Workflow    │                │ Pattern     │
+│ & Settings  │                │ Execution   │                │ Recognition │
+└─────────────┘                └─────────────┘                └─────────────┘
+```
 
 ## 🏗️ Technical Architecture
 
-### Frontend Framework
+### AI-Powered Frontend Framework
 - React 18 with functional components and hooks
 - Tailwind CSS for responsive styling and design system
-- Recharts for data visualization and charts
+- Recharts for data visualization and AI prediction charts
 - Lucide React for consistent iconography
+- Webhook integration for real-time AI communication
 
-### State Management
-- React useState for component-level state
-- useEffect for side effects and real-time updates
-- No external state management (Redux/Context) needed for current scope
+### n8n AI Agent Backend
+- **Workflow Automation:** Price simulation and prediction workflows
+- **Machine Learning Models:** Pattern recognition and demand forecasting
+- **Data Storage:** Historical price data and user interaction analytics
+- **Webhook Endpoints:** Real-time communication with React frontend
+- **AI Algorithms:** Predictive pricing and smart alert optimization
 
-### Data Flow
-- User inputs (route, service, alert price) update component state
-- Real-time tracking generates price updates via intervals
-- Price changes trigger alert system checks
-- Historical data feeds into visualization components
-- Recommendations calculated from demand analysis
+### AI-Enhanced State Management
+- React useState for component-level state and AI predictions
+- useEffect for webhook listeners and real-time AI updates
+- Webhook event handling for AI-generated insights and alerts
+- AI confidence scores and prediction metadata in component state
 
-### Performance Considerations
-- Controlled component updates to prevent unnecessary re-renders
-- Efficient interval management with proper cleanup
-- Responsive chart library with built-in optimization
-- Minimal external dependencies for fast loading
+### Intelligent Data Flow
+```
+┌─────────────────┐     Webhooks     ┌─────────────────┐     AI Analysis     ┌─────────────────┐
+│   React App     │◄─────────────────│  n8n Workflows │◄─────────────────────│  AI Models      │
+│   (Frontend)    │                  │  (Automation)   │                     │  (Prediction)   │
+└─────────────────┘                  └─────────────────┘                     └─────────────────┘
+         │                                     │                                       │
+         │ User Actions                        │ Trigger Events                        │ Learning Data
+         │ Route Setup                         │ Price Thresholds                      │ Pattern Analysis
+         │ Alert Config                        │ Time-based Triggers                   │ User Behavior
+         ▼                                     ▼                                       ▼
+┌─────────────────┐                  ┌─────────────────┐                     ┌─────────────────┐
+│ User Interface  │                  │ Workflow Engine │                     │ Data Processing │
+│ - Route Input   │                  │ - Price Sim     │                     │ - Historical    │
+│ - Live Prices   │                  │ - Predictions   │                     │ - Patterns      │
+│ - AI Insights   │                  │ - Smart Alerts  │                     │ - Optimization  │
+│ - Predictions   │                  │ - Learning      │                     │ - Forecasting   │
+└─────────────────┘                  └─────────────────┘                     └─────────────────┘
+```
+
+### AI Performance & Optimization
+- Efficient webhook connection management with automatic reconnection
+- AI prediction caching to reduce computational overhead
+- Optimized n8n workflow execution with smart triggering
+- Real-time AI model updates without frontend interruption
+- Predictive data loading based on user behavior patterns
+
+### Machine Learning Integration
+- **Historical Analysis:** n8n workflows analyze past price data patterns
+- **Predictive Modeling:** AI algorithms forecast price movements and surge patterns
+- **User Personalization:** Machine learning adapts to individual user travel patterns
+- **Continuous Learning:** AI models improve accuracy based on prediction outcomes
+- **Pattern Recognition:** Advanced algorithms identify market trends and anomalies
 
 ## 🚀 Getting Started
 
@@ -283,3 +762,491 @@
 - Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 - Mobile browsers on iOS Safari and Chrome Mobile
 - Progressive enhancement for older browsers
+
+---
+
+## 📱 Responsive Wireframes
+
+### 🖥️ Desktop Layout (1200px+)
+
+#### Main Dashboard - Desktop View (AI-Enhanced)
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│ 🤖 Fare Tracker AI                        [Help] [Settings] [Profile]               │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│ ┌─────────────────────────────────┐  ┌─────────────────────────────────────────────┐ │
+│ │ 📍 ROUTE SETUP                  │  │ 💵 AI-POWERED FARES  [●] AI Tracking       │ │
+│ ├─────────────────────────────────┤  ├─────────────────────────────────────────────┤ │
+│ │                                 │  │                                             │ │
+│ │ From: [Cardiff Central      🔍] │  │ ┌─────────┐ ┌─────────┐ ┌─────────┐        │ │
+│ │                                 │  │ │🚗 Uber  │ │⚡ Bolt  │ │🚕 Taxi  │        │ │
+│ │ To:   [Newport Station     🔍] │  │ │ £28.50  │ │ £26.80  │ │ £32.00  │        │ │
+│ │                                 │  │ │ ↗ +2.1% │ │ ↘ -1.5% │ │ ↗ +3.2% │        │ │
+│ │ ┌─────────────────────────────┐ │  │ │ 🕐 4min │ │ 🕐 6min │ │ 🕐 3min │        │ │
+│ │ │ ⭐ Saved Routes              │ │  │ └─────────┘ └─────────┘ └─────────┘        │ │
+│ │ │ • Home ↔ Work               │ │  │                                             │ │
+│ │ │ • Airport ↔ City Center     │ │  │ 🤖 AI Insight: Bolt optimal choice         │ │
+│ │ │ • University ↔ Library      │ │  │ 📈 Prediction: Prices ↘ 12% in 8 min     │ │
+│ │ │ [+ Add Current Route]       │ │  │ 🎯 Confidence: High (87%)                  │ │
+│ │ └─────────────────────────────┘ │  │                                             │ │
+│ │                                 │  │ [🤖 AI Enhanced Tracking] [⏸ Pause]        │ │
+│ │ [🔄 Swap Locations]             │  └─────────────────────────────────────────────┘ │
+│ │ [🎯 Set as Default Route]       │                                                  │ │
+│ └─────────────────────────────────┘                                                  │ │
+│                                                                                     │
+│ ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│ │ 🤖 AI SMART ALERTS & PREDICTIONS                                               │ │
+│ ├─────────────────────────────────────────────────────────────────────────────────┤ │
+│ │                                                                                 │ │
+│ │ ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐        │ │
+│ │ │ 🚗 Uber AI Alert    │ │ ⚡ Bolt AI Alert    │ │ 🚕 Taxi AI Alert    │        │ │
+│ │ │ Smart threshold:£25 │ │ Smart threshold:£24 │ │ Smart threshold:£30 │        │ │
+│ │ │ Current: £28.50     │ │ Current: £26.80 ⚠️  │ │ Current: £32.00     │        │ │
+│ │ │ 🤖 AI: Drop likely  │ │ 🔔 PREDICTED DROP!  │ │ 🤖 AI: Price stable │        │ │
+│ │ │ in 8 minutes (87%)  │ │ Book in 3-5 min     │ │ for next 20 min     │        │ │
+│ │ │ [Wait] [Book Now]   │ │ [🎯 Book] [Snooze]  │ │ [Edit] [Disable]    │        │ │
+│ │ └─────────────────────┘ └─────────────────────┘ └─────────────────────┘        │ │
+│ │                                                                                 │ │
+│ │ 🤖 AI Learning: Your travel pattern suggests booking at 8:45 AM saves avg £3.20│ │
+│ │ 📊 Recent AI Accuracy: 91% prediction success rate                            │ │
+│ └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                     │
+│ ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│ │ 📈 AI PREDICTIVE INSIGHTS                                                       │ │
+│ ├─────────────────────────────────────────────────────────────────────────────────┤ │
+│ │                                                                                 │ │
+│ │ ⏰ Next 60 Minutes AI Forecast:                                                │ │
+│ │ ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐       │ │
+│ │ │8:30 │8:40 │8:50 │9:00 │9:10 │9:20 │9:30 │9:40 │9:50 │10:0 │10:1 │10:2 │       │ │
+│ │ │£29↗ │£31↗ │£26↘ │£24↘ │£22↘ │£25↗ │£27↗ │£26↘ │£25↘ │£23↘ │£24↗ │£26↗ │       │ │
+│ │ │ 🔴  │ 🔴  │ 🟡  │ 🟢  │ 🟢  │ 🟡  │ 🟡  │ 🟢  │ 🟢  │ 🟢  │ 🟡  │ 🟡  │       │ │
+│ │ └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘       │ │
+│ │                                                                                 │ │
+│ │ 🎯 AI Recommendation: Optimal booking window is 9:10-9:20 AM                   │ │
+│ │ 💡 Reason: Historical pattern shows 15% price drop with 92% confidence         │ │
+│ │ ⚠️  AI Alert: Surge pricing likely at 8:30-9:00 AM due to morning rush        │ │
+│ └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### Analytics Dashboard - Desktop View
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│ 🚗 Fare Tracker > Analytics                   [Dashboard] [Alerts] [History]         │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│ ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│ │ 📈 PRICE TRENDS - Cardiff Central → Newport Station                             │ │
+│ ├─────────────────────────────────────────────────────────────────────────────────┤ │
+│ │                                                                                 │ │
+│ │ [Today] [7 Days] [30 Days]                           [Uber] [Bolt] [Taxi] [All] │ │
+│ │                                                                                 │ │
+│ │    £45 ┤                                                                       │ │
+│ │    £40 ┤     ●                                     ●                           │ │
+│ │    £35 ┤   ●   ●                                 ●   ●                         │ │
+│ │    £30 ┤ ●       ●   ●                         ●       ●                       │ │
+│ │    £25 ┤           ●   ●   ●               ●   ●           ●                   │ │
+│ │    £20 ┤ ●               ●   ●         ●   ●                 ●                 │ │
+│ │    £15 ┤                     ●     ●   ●                     ●                 │ │
+│ │        └┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬─      │ │
+│ │         6AM 7AM 8AM 9AM 10AM11AM12PM 1PM 2PM 3PM 4PM 5PM 6PM 7PM 8PM 9PM10PM   │ │
+│ │                                                                                 │ │
+│ │ Legend: ⚫ Uber  🟢 Bolt  🟠 Taxi    Peak Hours: 🔴 8-9AM, 5-7PM               │ │
+│ │                                                                                 │ │
+│ │ ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐        │ │
+│ │ │ 📊 Daily Summary    │ │ 💰 Your Savings     │ │ 🎯 Recommendations  │        │ │
+│ │ │ Avg Price: £27.50   │ │ Today: £4.20 saved  │ │ Best Time: 10:30 AM │        │ │
+│ │ │ Lowest: £19.80      │ │ This Week: £18.50   │ │ Price: £21.50       │        │ │
+│ │ │ Highest: £41.20     │ │ This Month: £76.30  │ │ Demand: 35% (Low)   │        │ │
+│ │ │ Peak Diff: +52%     │ │ Yearly Proj: £890   │ │ Next Best: 2:15 PM  │        │ │
+│ │ └─────────────────────┘ └─────────────────────┘ └─────────────────────┘        │ │
+│ └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                     │
+│ ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│ │ ⏰ OPTIMAL TRAVEL TIMES                                                         │ │
+│ ├─────────────────────────────────────────────────────────────────────────────────┤ │
+│ │                                                                                 │ │
+│ │ ┌─────────────────────────────────────────────────────────────────────────────┐ │ │
+│ │ │ 🥇 BEST: 10:30 AM     £21.50    📊 ████░░░░░░ 35% demand                   │ │ │
+│ │ │    All services available • Low surge risk • 4-6 min pickup                │ │ │
+│ │ │    💡 Tip: Book 10 mins early for guaranteed low price                     │ │ │
+│ │ └─────────────────────────────────────────────────────────────────────────────┘ │ │
+│ │                                                                                 │ │
+│ │ ┌─────────────────────────────────────────────────────────────────────────────┐ │ │
+│ │ │ 🥈 GOOD: 2:15 PM      £24.80    📊 ██████░░░░ 55% demand                   │ │ │
+│ │ │    Most services available • Medium surge risk • 3-5 min pickup            │ │ │
+│ │ │    💡 Alternative to avoid afternoon peak                                   │ │ │
+│ │ └─────────────────────────────────────────────────────────────────────────────┘ │ │
+│ │                                                                                 │ │
+│ │ ┌─────────────────────────────────────────────────────────────────────────────┐ │ │
+│ │ │ 🥉 OKAY: 6:45 AM      £26.20    📊 ███░░░░░░░ 25% demand                   │ │ │
+│ │ │    Limited availability • Very low surge • 8-12 min pickup                 │ │ │
+│ │ │    💡 Early bird special - best for flexible schedules                     │ │ │
+│ │ └─────────────────────────────────────────────────────────────────────────────┘ │ │
+│ │                                                                                 │ │
+│ │ [⚠️ Avoid Peak Hours: 8-9 AM (£35-45), 5-7 PM (£32-42)]                      │ │
+│ └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 📱 Mobile Layout (320px - 768px)
+
+#### Main Dashboard - Mobile View (AI-Enhanced)
+```
+┌─────────────────────────────────────┐
+│ 🤖 Fare Tracker AI           ☰     │
+├─────────────────────────────────────┤
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 📍 ROUTE SETUP                  │ │
+│ ├─────────────────────────────────┤ │
+│ │                                 │ │
+│ │ From: [Cardiff Central      🔍] │ │
+│ │                                 │ │
+│ │ To:   [Newport Station     🔍] │ │
+│ │                                 │ │
+│ │ ⭐ Recent Routes                │ │
+│ │ • Home ↔ Work                   │ │
+│ │ • Airport ↔ City               │ │
+│ │                                 │ │
+│ │ [🔄 Swap] [⭐ Save Route]       │ │
+│ └─────────────────────────────────┘ │
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 💵 AI-POWERED FARES   [🤖] Live │ │
+│ ├─────────────────────────────────┤ │
+│ │                                 │ │
+│ │ ┌─────────────────────────────┐ │ │
+│ │ │ 🚗 Uber          £28.50     │ │ │
+│ │ │ ↗ +2.1%          🕐 4min    │ │ │
+│ │ │ 🤖 AI: Drop in 8 min (87%) │ │ │
+│ │ └─────────────────────────────┘ │ │
+│ │                                 │ │
+│ │ ┌─────────────────────────────┐ │ │
+│ │ │ ⚡ Bolt          £26.80 👑  │ │ │
+│ │ │ ↘ -1.5%          🕐 6min    │ │ │
+│ │ │ 🎯 AI: Book now! Best price │ │ │
+│ │ └─────────────────────────────┘ │ │
+│ │                                 │ │
+│ │ ┌─────────────────────────────┐ │ │
+│ │ │ 🚕 Taxi          £32.00     │ │ │
+│ │ │ ↗ +3.2%          🕐 3min    │ │ │
+│ │ │ 🤖 AI: Stable next 20min    │ │ │
+│ │ └─────────────────────────────┘ │ │
+│ │                                 │ │
+│ │ 🤖 AI Confidence: High (91%)    │ │
+│ │ 📈 Next drop predicted: 9:15 AM │ │
+│ │                                 │ │
+│ │ [🤖 AI Insights] [🔔 Smart Alert]│ │
+│ └─────────────────────────────────┘ │
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 🔔 AI SMART ALERTS              │ │
+│ ├─────────────────────────────────┤ │
+│ │                                 │ │
+│ │ ⚡ AI-Optimized Alert: £24.00   │ │
+│ │ Current: £26.80                 │ │
+│ │ 🤖 PREDICTION: Drop in 3-5 min! │ │
+│ │ Confidence: 87% | Save: £2.80   │ │
+│ │ [🎯 Smart Book] [⏰ Wait] [Edit] │ │
+│ │                                 │ │
+│ │ 🚗 Uber AI Alert: £25.00        │ │
+│ │ Current: £28.50                 │ │
+│ │ 🤖 Learning: Drop likely 9:10AM │ │
+│ │ [⚡ Enable] [Configure]         │ │
+│ │                                 │ │
+│ │ [+ Create AI Alert]             │ │
+│ └─────────────────────────────────┘ │
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 🤖 AI PREDICTIONS               │ │
+│ ├─────────────────────────────────┤ │
+│ │                                 │ │
+│ │ 📈 Next 30 Minutes Forecast:    │ │
+│ │                                 │ │
+│ │ 🕘 8:30 AM - £29 ↗ (Peak) 🔴   │ │
+│ │ 🕘 8:45 AM - £31 ↗ (Surge) 🔴  │ │
+│ │ 🕘 9:00 AM - £26 ↘ (Drop) 🟡   │ │
+│ │ 🕘 9:15 AM - £22 ↘ (Best) 🟢   │ │
+│ │ 🕘 9:30 AM - £25 ↗ (Rising) 🟡 │ │
+│ │                                 │ │
+│ │ 🎯 AI Recommends: Wait until    │ │
+│ │    9:15 AM for £6.80 savings    │ │
+│ │                                 │ │
+│ │ 💡 Pattern: Rush hour surge     │ │
+│ │    detected. Post-peak drop     │ │
+│ │    coming soon with 91% confidence│ │
+│ │                                 │ │
+│ │ [Set Smart Reminder] [Details]  │ │
+│ └─────────────────────────────────┘ │
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 💰 AI SAVINGS TRACKER           │ │
+│ ├─────────────────────────────────┤ │
+│ │                                 │ │
+│ │ 🤖 Today's AI Savings: £7.40    │ │
+│ │                                 │ │
+│ │ vs. Random Booking: £4.20       │ │
+│ │ vs. Peak Pricing: £7.40         │ │
+│ │ AI Accuracy: 91% success        │ │
+│ │                                 │ │
+│ │ This Month: £89.60 saved        │ │
+│ │ 🏆 Personal Best Week!          │ │
+│ │                                 │ │
+│ │ [📊 AI Analytics] [🏆 Achievements]│ │
+│ └─────────────────────────────────┘ │
+│                                     │
+│ ─────── AI-Enhanced Navigation ────  │
+│ [🏠 Home] [🤖 AI] [📊 Trends]       │
+│ [🔔 Smart] [👤 Profile]            │
+└─────────────────────────────────────┘
+```
+
+#### Price Trends - Mobile View
+```
+┌─────────────────────────────────────┐
+│ 📈 Price Trends           [← Back]  │
+├─────────────────────────────────────┤
+│                                     │
+│ Cardiff Central → Newport Station   │
+│                                     │
+│ [Today] [Week] [Month]              │ │
+│ [🚗 Uber] [⚡ Bolt] [🚕 Taxi]       │
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │                                 │ │
+│ │ £45┤                            │ │
+│ │ £40┤  ●                         │ │
+│ │ £35┤●  ●                        │ │
+│ │ £30┤   ● ●                      │ │
+│ │ £25┤    ● ●                     │ │
+│ │ £20┤●     ●                     │ │
+│ │    └┬──┬──┬──┬──┬──┬──┬──       │ │
+│ │     6AM 9AM 12PM 3PM 6PM 9PM    │ │
+│ │                                 │ │
+│ │ Current: £26.80                 │ │
+│ │ Today's Range: £19.80 - £41.20  │ │
+│ └─────────────────────────────────┘ │
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 🎯 SMART RECOMMENDATIONS        │ │
+│ ├─────────────────────────────────┤ │
+│ │                                 │ │
+│ │ ⏰ Best Times Today              │ │
+│ │                                 │ │
+│ │ 🥇 10:30 AM - £21.50            │ │
+│ │    Low demand (35%)             │ │
+│ │                                 │ │
+│ │ 🥈 2:15 PM - £24.80             │ │
+│ │    Medium demand (55%)          │ │
+│ │                                 │ │
+│ │ 🥉 6:45 AM - £26.20             │ │
+│ │    Very low demand (25%)        │ │
+│ │                                 │ │
+│ │ ⚠️ Avoid: 8-9 AM, 5-7 PM        │ │
+│ │    Peak surge pricing           │ │
+│ │                                 │ │
+│ │ [Set Reminder] [View Details]   │ │
+│ └─────────────────────────────────┘ │
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 📊 YOUR STATISTICS              │ │
+│ ├─────────────────────────────────┤ │
+│ │                                 │ │
+│ │ This Week:                      │ │
+│ │ • Total Saved: £18.50           │ │
+│ │ • Trips Tracked: 12             │ │
+│ │ • Avg Savings: £1.54/trip       │ │
+│ │                                 │ │
+│ │ This Month:                     │ │
+│ │ • Total Saved: £76.30           │ │
+│ │ • Best Day: Tuesday (£12.40)    │ │
+│ │ • Projected Annual: £890        │ │
+│ │                                 │ │
+│ │ [Share Achievement]             │ │
+│ └─────────────────────────────────┘ │
+│                                     │
+└─────────────────────────────────────┘
+```
+
+#### Alert Configuration - Mobile View
+```
+┌─────────────────────────────────────┐
+│ 🔔 Configure Alert        [← Back] │
+├─────────────────────────────────────┤
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 🚗 UBER PRICE ALERT SETUP       │ │
+│ ├─────────────────────────────────┤ │
+│ │                                 │ │
+│ │ Route: Cardiff → Newport        │ │
+│ │ Current Uber Price: £28.50      │ │
+│ │                                 │ │
+│ │ Alert me when price drops below: │ │
+│ │                                 │ │
+│ │ ┌─────────────────────────────┐ │ │
+│ │ │ £ [25.00              ] 💷 │ │ │
+│ │ └─────────────────────────────┘ │ │
+│ │                                 │ │
+│ │ 💡 You'll save £3.50 per trip   │ │
+│ │    when this alert triggers     │ │
+│ │                                 │ │
+│ │ Alert Methods:                  │ │
+│ │ ☑️ Browser Notification         │ │
+│ │ ☑️ Sound Alert                  │ │
+│ │ ☐ SMS (Premium)                 │ │
+│ │ ☐ Email                         │ │
+│ │                                 │ │
+│ │ Active Hours:                   │ │
+│ │ ☑️ All Day                      │ │
+│ │ ☐ Custom Hours                  │ │
+│ │                                 │ │
+│ │ Snooze Options:                 │ │
+│ │ ○ No Snooze                     │ │
+│ │ ● 10 Minutes                    │ │
+│ │ ○ 30 Minutes                    │ │
+│ │ ○ 1 Hour                        │ │
+│ │                                 │ │
+│ │ [💾 Save Alert] [🗑️ Delete]     │ │
+│ └─────────────────────────────────┘ │
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 📱 ALERT PREVIEW                │ │
+│ ├─────────────────────────────────┤ │
+│ │                                 │ │
+│ │ ┌─────────────────────────────┐ │ │
+│ │ │ 🔔 Fare Tracker             │ │ │
+│ │ │                             │ │ │
+│ │ │ 🚗 Uber price dropped!      │ │ │
+│ │ │ Cardiff → Newport           │ │ │
+│ │ │ Now: £24.80 (was £28.50)    │ │ │
+│ │ │ You save: £3.70             │ │ │
+│ │ │                             │ │ │
+│ │ │ [Book Now] [Snooze] [View]  │ │ │
+│ │ └─────────────────────────────┘ │ │
+│ │                                 │ │
+│ │ This is how your alert will     │ │
+│ │ appear when triggered           │ │
+│ └─────────────────────────────────┘ │
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 📜 RECENT ALERT HISTORY         │ │
+│ ├─────────────────────────────────┤ │
+│ │                                 │ │
+│ │ • Bolt dropped to £24.50        │ │
+│ │   2 minutes ago ✅ Acted        │ │
+│ │                                 │ │
+│ │ • Uber dropped to £26.00        │ │
+│ │   15 minutes ago ⏰ Snoozed     │ │
+│ │                                 │ │
+│ │ • Taxi dropped to £29.50        │ │
+│ │   1 hour ago ❌ Missed          │ │
+│ │                                 │ │
+│ │ [View All History]              │ │
+│ └─────────────────────────────────┘ │
+│                                     │
+└─────────────────────────────────────┘
+```
+
+### 🔄 Responsive Breakpoints & Navigation Flow
+
+#### Responsive Layout Grid System
+```
+📱 Mobile (320-767px):     📺 Desktop (1200px+):
+┌─────────────┐            ┌─────────────────────────────────┐
+│   Header    │            │ Header                          │
+├─────────────┤            ├──────────────┬──────────────────┤
+│             │            │              │                  │
+│   Content   │            │   Content    │    Sidebar       │
+│   (Stack)   │            │   (Grid)     │    (Alerts)      │
+│             │            │              │                  │
+├─────────────┤            ├──────────────┴──────────────────┤
+│ Bottom Nav  │            │ Footer                          │
+└─────────────┘            └─────────────────────────────────┘
+
+💻 Tablet (768-1199px):
+┌─────────────────────────┐
+│ Header                  │
+├─────────────────────────┤
+│                         │
+│   Content (Hybrid)      │
+│   2-column → Stack      │
+│                         │
+├─────────────────────────┤
+│ Navigation Bar          │
+└─────────────────────────┘
+```
+
+#### User Flow Navigation Map
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    🏠 MAIN DASHBOARD                        │
+│                         │                                   │
+│        ┌────────────────┼────────────────┐                 │
+│        │                │                │                 │
+│        ▼                ▼                ▼                 │
+│   📍 ROUTE         💵 FARES        🔔 ALERTS              │
+│    SETUP           TRACKING        MANAGEMENT              │
+│        │                │                │                 │
+│        │                ▼                ▼                 │
+│        │           📈 TRENDS        ⚙️ ALERT              │
+│        │           ANALYSIS         CONFIG                 │
+│        │                │                │                 │
+│        │                ▼                │                 │
+│        │           ⏰ TRAVEL             │                 │
+│        │           RECOMMENDATIONS       │                 │
+│        │                │                │                 │
+│        └────────────────┼────────────────┘                 │
+│                         │                                   │
+│                         ▼                                   │
+│                    👤 PROFILE                              │
+│                    SETTINGS                                │
+└─────────────────────────────────────────────────────────────┘
+
+🔄 Quick Actions Available From Any Screen:
+• Emergency Call Taxi (Header)
+• Quick Route Swap (Floating Button)
+• Instant Alert Toggle (Top Bar)
+• Share Current Prices (Context Menu)
+```
+
+#### Interaction States & Micro-Animations
+
+**Button States (All Platforms):**
+```
+Normal State:    [Start Tracking]
+Hover/Focus:     [Start Tracking] ← (Slight shadow + blue border)
+Active/Press:    [●Start Tracking] ← (Pressed effect + icon change)
+Loading:         [⟳Starting...] ← (Spinner + disabled state)
+Success:         [✓ Tracking Active] ← (Green + checkmark, 2s duration)
+```
+
+**Price Update Animations (Mobile & Desktop):**
+```
+Price Increase:  £28.50 → ↗️£29.20 ← (Red flash, fade to normal)
+Price Decrease:  £28.50 → ↘️£27.80 ← (Green flash, fade to normal)
+Alert Trigger:   £28.50 → 🔔£24.50 ← (Gold highlight, pulse effect)
+```
+
+**Alert Notification Slide-in (Mobile):**
+```
+Hidden:    [Screen Content]
+Sliding:   [🔔 Alert sliding from top] ← (0.3s ease-out)
+Shown:     [🔔 Alert Banner Fixed] ← (Auto-hide after 5s)
+Dismissed: [Slide out to right] ← (0.2s ease-in)
+```
+
+### 📊 Component Interaction Matrix
+
+| Component | Mobile Action | Desktop Action | Responsive Behavior |
+|-----------|---------------|----------------|-------------------|
+| Route Input | Tap to focus + keyboard | Click to focus | Auto-complete suggestions scale |
+| Fare Cards | Tap to expand details | Hover for tooltip | Stack vertically on mobile |
+| Price Chart | Touch/swipe to navigate | Mouse hover for data points | Simplified view on small screens |
+| Alert Setup | Modal overlay | Sidebar panel | Full-screen modal on mobile |
+| Navigation | Bottom tab bar | Top navigation | Hamburger menu on mobile |
+
+This comprehensive wireframe system ensures a seamless user experience across all device sizes while maintaining functionality and usability standards!
