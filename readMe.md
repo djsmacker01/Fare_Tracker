@@ -165,7 +165,7 @@
 
 #### Epic 1: Route Setup & Management
 ```
-As a daily commuter (Emma),
+As a daily commuter (Nurudeen),
 I want to quickly set up my regular route,
 So that I can immediately start tracking fares without repetitive data entry.
 
@@ -192,7 +192,7 @@ Acceptance Criteria:
 
 #### Epic 2: Real-Time Fare Tracking
 ```
-As a daily commuter (Emma),
+As a daily commuter (Nurudeen),
 I want to see live fare updates from all services,
 So that I can choose the most cost-effective option at any moment.
 
@@ -232,7 +232,7 @@ Acceptance Criteria:
 ```
 
 ```
-As a daily commuter (Emma),
+As a daily commuter (Nurudeen),
 I want smart alerts that consider my schedule,
 So that I only get notified when price drops are relevant to my travel times.
 
@@ -259,7 +259,7 @@ Acceptance Criteria:
 ```
 
 ```
-As a daily commuter (Emma),
+As a daily commuter (Nurudeen),
 I want personalized insights about my travel patterns,
 So that I can optimize my commute timing and save money.
 
@@ -286,7 +286,7 @@ Acceptance Criteria:
 ```
 
 ```
-As a daily commuter (Emma),
+As a daily commuter (Nurudeen),
 I want recommendations that balance cost and convenience,
 So that I can save money without significantly disrupting my schedule.
 
@@ -300,7 +300,7 @@ Acceptance Criteria:
 
 #### Epic 7: AI-Powered Predictions & Insights
 ```
-As a daily commuter (Emma),
+As a daily commuter (Nurudeen),
 I want AI to predict when prices will drop during my travel window,
 So that I can plan my departure time to get the best fare.
 
